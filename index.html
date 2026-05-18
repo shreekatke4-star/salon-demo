@@ -3,16 +3,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Glamour Studio â€” Premium Salon & Beauty Lounge</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/svg" href="favicon.svg">
+    <title>Glamour Studio — Premium Salon & Beauty Lounge</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="shortcut icon" href="favicon.svg">
+    <meta name="theme-color" content="#C8834A">
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
-        // âœ… REPLACE with your EmailJS Public Key
-        emailjs.init("YOUR_PUBLIC_KEY");
+        // ============================================================
+        // 📧 EMAILJS SETUP — 3 steps to connect your email:
+        // 1. Sign up FREE at https://www.emailjs.com
+        // 2. Add an Email Service (Gmail/Outlook) → get Service ID
+        // 3. Create an Email Template → get Template ID
+        // Then replace the 3 placeholders below and in handleBooking()
+        // ============================================================
+        emailjs.init("YOUR_PUBLIC_KEY"); // 🔑 Replace with your Public Key
     </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -89,40 +98,6 @@
             animation: pulse-glow 2s ease-in-out infinite;
         }
 
-        @keyframes hero-float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-12px);
-            }
-        }
-
-        .hero-float {
-            animation: hero-float 6s ease-in-out infinite;
-        }
-
-        @keyframes hero-bg-zoom {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .hero-bg-zoom {
-            animation: hero-bg-zoom 20s ease-in-out infinite;
-        }
-
         .ba-slider {
             position: relative;
             overflow: hidden;
@@ -152,7 +127,7 @@
         }
 
         .ba-slider .ba-handle::after {
-            content: 'âŸ¨ âŸ©';
+            content: '⟨ ⟩';
             position: absolute;
             top: 50%;
             left: 50%;
@@ -238,12 +213,24 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
+
+        /* Toast notification */
+        .toast {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
     </style>
 </head>
 
 <body class="bg-[#0A0806] text-white font-sans">
 
-    <!-- NAVIGATION -->
+    <!-- ========== NAVIGATION ========== -->
     <nav id="navbar"
         class="fixed top-0 w-full z-50 nav-blur bg-[#0A0806]/80 border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -264,13 +251,15 @@
             </div>
             <div class="hidden md:flex items-center gap-3">
                 <a href="#booking"
-                    class="px-5 py-2.5 bg-brand hover:bg-brand-light text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all duration-150">Book
-                    Now</a>
+                    class="px-5 py-2.5 bg-brand hover:bg-brand-light text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all duration-150">
+                    Book Now
+                </a>
             </div>
             <button id="menuBtn" class="md:hidden text-white">
                 <span class="iconify text-2xl" data-icon="mdi:menu"></span>
             </button>
         </div>
+        <!-- Mobile Menu -->
         <div id="mobileMenu" class="md:hidden hidden bg-[#0F0C08] border-t border-white/5 px-6 py-6 space-y-4">
             <a href="#services"
                 class="block text-sm text-slate-400 hover:text-white transition-colors mobile-link">Services</a>
@@ -335,7 +324,7 @@
                     </div>
                     <div class="mt-12 flex flex-wrap items-center gap-8 text-creme/35 text-sm">
                         <div class="flex items-center gap-2"><span class="iconify text-brand"
-                                data-icon="mdi:star"></span><span>4.9â˜… Google</span></div>
+                                data-icon="mdi:star"></span><span>4.9★ Google</span></div>
                         <div class="flex items-center gap-2"><span class="iconify text-brand"
                                 data-icon="mdi:account-group"></span><span>10,000+ Happy Clients</span></div>
                         <div class="flex items-center gap-2"><span class="iconify text-brand"
@@ -346,40 +335,40 @@
         </div>
     </section>
 
-    <!-- MARQUEE -->
+    <!-- ========== MARQUEE ========== -->
     <div class="py-4 border-y border-brand/10 bg-[#0F0C08] overflow-hidden">
         <div class="marquee flex items-center gap-8 whitespace-nowrap">
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Haircut</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Hair Spa</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Hair Color</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Facial</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Makeup</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Bridal Makeup</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Manicure</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Pedicure</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Waxing</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Threading</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Haircut</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Hair Spa</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Hair Color</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Facial</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Makeup</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Bridal Makeup</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Manicure</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Pedicure</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Waxing</span>
-            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">âœ¦ Threading</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Haircut</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Hair Spa</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Hair Color</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Facial</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Makeup</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Bridal Makeup</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Manicure</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Pedicure</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Waxing</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Threading</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Haircut</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Hair Spa</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Hair Color</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Facial</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Makeup</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Bridal Makeup</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Manicure</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Pedicure</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Waxing</span>
+            <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Threading</span>
         </div>
     </div>
 
-    <!-- SERVICES -->
+    <!-- ========== SERVICES ========== -->
     <section id="services" class="py-24 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <span class="text-xs font-bold uppercase tracking-widest text-brand">Our Services</span>
                 <h2 class="text-3xl md:text-5xl font-bold tracking-tight mt-4">What We Offer</h2>
                 <p class="text-creme/50 mt-4 max-w-2xl mx-auto font-light">From trendy haircuts to stunning bridal
-                    makeovers â€” we've got every beauty need covered under one roof.</p>
+                    makeovers — we've got every beauty need covered under one roof.</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
                 <div onclick="openServiceModal('haircut')"
@@ -482,7 +471,7 @@
         </div>
     </section>
 
-    <!-- PRICING -->
+    <!-- ========== PRICING ========== -->
     <section id="pricing" class="py-24 px-6 bg-[#0F0C08]">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -507,43 +496,43 @@
                         <tbody>
                             <tr class="border-b border-white/5 hover:bg-brand/[0.03] transition-colors">
                                 <td class="py-4 px-6 font-medium">Basic Haircut</td>
-                                <td class="py-4 px-6 text-right text-brand font-semibold">â‚¹499</td>
+                                <td class="py-4 px-6 text-right text-brand font-semibold">₹499</td>
                             </tr>
                             <tr class="border-b border-white/5 hover:bg-brand/[0.03] transition-colors">
                                 <td class="py-4 px-6 font-medium">Hair Spa</td>
-                                <td class="py-4 px-6 text-right text-brand font-semibold">â‚¹999</td>
+                                <td class="py-4 px-6 text-right text-brand font-semibold">₹999</td>
                             </tr>
                             <tr class="border-b border-white/5 hover:bg-brand/[0.03] transition-colors">
                                 <td class="py-4 px-6 font-medium">Hair Color (Global)</td>
-                                <td class="py-4 px-6 text-right text-brand font-semibold">â‚¹2,499</td>
+                                <td class="py-4 px-6 text-right text-brand font-semibold">₹2,499</td>
                             </tr>
                             <tr class="border-b border-white/5 hover:bg-brand/[0.03] transition-colors">
                                 <td class="py-4 px-6 font-medium">Highlights / Balayage</td>
-                                <td class="py-4 px-6 text-right text-brand font-semibold">â‚¹3,999</td>
+                                <td class="py-4 px-6 text-right text-brand font-semibold">₹3,999</td>
                             </tr>
                             <tr class="border-b border-white/5 hover:bg-brand/[0.03] transition-colors">
                                 <td class="py-4 px-6 font-medium">Facial (Classic)</td>
-                                <td class="py-4 px-6 text-right text-brand font-semibold">â‚¹799</td>
+                                <td class="py-4 px-6 text-right text-brand font-semibold">₹799</td>
                             </tr>
                             <tr class="border-b border-white/5 hover:bg-brand/[0.03] transition-colors">
                                 <td class="py-4 px-6 font-medium">Facial (Gold / Diamond)</td>
-                                <td class="py-4 px-6 text-right text-brand font-semibold">â‚¹1,499</td>
+                                <td class="py-4 px-6 text-right text-brand font-semibold">₹1,499</td>
                             </tr>
                             <tr class="border-b border-white/5 hover:bg-brand/[0.03] transition-colors">
                                 <td class="py-4 px-6 font-medium">Party Makeup</td>
-                                <td class="py-4 px-6 text-right text-brand font-semibold">â‚¹2,999</td>
+                                <td class="py-4 px-6 text-right text-brand font-semibold">₹2,999</td>
                             </tr>
                             <tr class="border-b border-white/5 hover:bg-brand/[0.03] transition-colors">
                                 <td class="py-4 px-6 font-medium">Bridal Package</td>
-                                <td class="py-4 px-6 text-right text-brand font-semibold">â‚¹14,999</td>
+                                <td class="py-4 px-6 text-right text-brand font-semibold">₹14,999</td>
                             </tr>
                             <tr class="border-b border-white/5 hover:bg-brand/[0.03] transition-colors">
                                 <td class="py-4 px-6 font-medium">Manicure + Pedicure</td>
-                                <td class="py-4 px-6 text-right text-brand font-semibold">â‚¹899</td>
+                                <td class="py-4 px-6 text-right text-brand font-semibold">₹899</td>
                             </tr>
                             <tr class="hover:bg-brand/[0.03] transition-colors">
                                 <td class="py-4 px-6 font-medium">Full Body Waxing</td>
-                                <td class="py-4 px-6 text-right text-brand font-semibold">â‚¹1,499</td>
+                                <td class="py-4 px-6 text-right text-brand font-semibold">₹1,499</td>
                             </tr>
                         </tbody>
                     </table>
@@ -554,7 +543,7 @@
         </div>
     </section>
 
-    <!-- GALLERY -->
+    <!-- ========== GALLERY ========== -->
     <section id="gallery" class="py-24 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -563,6 +552,7 @@
                 <p class="text-creme/50 mt-4 max-w-2xl mx-auto font-light">See the transformations we create every day.
                     Our work speaks louder than words.</p>
             </div>
+            <!-- Gallery Filter -->
             <div class="flex flex-wrap justify-center gap-3 mb-10 reveal">
                 <button onclick="filterGallery('all')"
                     class="gallery-filter active px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest border border-brand/20 bg-brand text-white transition-all"
@@ -581,43 +571,42 @@
                     data-filter="color">Hair Color</button>
             </div>
             <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3 reveal">
-                <!-- Interior 1 -->
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="interior" onclick="openLightbox(this)">
-                    <img src="interior-gallery.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
+                    <img src="interior-gallery.jpg" class="w-full h-full object-cover"
+                        style="filter: sepia(0.08);">
                     <div
                         class="absolute inset-0 bg-cinna/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="iconify text-froth text-3xl" data-icon="mdi:magnify-plus"></span>
                     </div>
                 </div>
-                <!-- Haircut 1 -->
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="haircut" onclick="openLightbox(this)">
-                    <img src="haircut-gallery.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
+                    <img src="haircut-gallery.jpg" class="w-full h-full object-cover"
+                        style="filter: sepia(0.08);">
                     <div
                         class="absolute inset-0 bg-cinna/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="iconify text-froth text-3xl" data-icon="mdi:magnify-plus"></span>
                     </div>
                 </div>
-                <!-- Makeup 1 -->
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="makeup" onclick="openLightbox(this)">
-                    <img src="makeup-gallery.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
+                    <img src="makeup-gallery.jpg" class="w-full h-full object-cover"
+                        style="filter: sepia(0.08);">
                     <div
                         class="absolute inset-0 bg-cinna/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="iconify text-froth text-3xl" data-icon="mdi:magnify-plus"></span>
                     </div>
                 </div>
-                <!-- Color 1 -->
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="color" onclick="openLightbox(this)">
-                    <img src="hair-color.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
+                    <img src="hair-color-gallery.jpg" class="w-full h-full object-cover"
+                        style="filter: sepia(0.08);">
                     <div
                         class="absolute inset-0 bg-cinna/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="iconify text-froth text-3xl" data-icon="mdi:magnify-plus"></span>
                     </div>
                 </div>
-                <!-- Interior 2 -->
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="interior" onclick="openLightbox(this)">
                     <img src="hero.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
@@ -626,7 +615,6 @@
                         <span class="iconify text-froth text-3xl" data-icon="mdi:magnify-plus"></span>
                     </div>
                 </div>
-                <!-- Haircut 2 -->
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="haircut" onclick="openLightbox(this)">
                     <img src="haircut.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
@@ -635,7 +623,6 @@
                         <span class="iconify text-froth text-3xl" data-icon="mdi:magnify-plus"></span>
                     </div>
                 </div>
-                <!-- Makeup 2 -->
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="makeup" onclick="openLightbox(this)">
                     <img src="makeup.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
@@ -644,10 +631,9 @@
                         <span class="iconify text-froth text-3xl" data-icon="mdi:magnify-plus"></span>
                     </div>
                 </div>
-                <!-- Color 2 -->
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="color" onclick="openLightbox(this)">
-                    <img src="hair-color-gallery.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
+                    <img src="hair-color.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
                     <div
                         class="absolute inset-0 bg-cinna/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="iconify text-froth text-3xl" data-icon="mdi:magnify-plus"></span>
@@ -657,13 +643,14 @@
         </div>
     </section>
 
-    <!-- ABOUT -->
+    <!-- ========== ABOUT ========== -->
     <section id="about" class="py-24 px-6 bg-[#0F0C08]">
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-2 gap-16 items-center reveal">
                 <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&h=600&fit=crop&q=80"
-                        class="rounded-3xl w-full object-cover h-[500px]" style="filter: sepia(0.15);">
+                    <img src="interior-gallery.jpg"
+                        class="rounded-3xl w-full object-cover h-[500px] grayscale hover:grayscale-0 transition-all duration-700"
+                        style="filter: sepia(0.2) grayscale(1);">
                     <div class="absolute -bottom-6 -right-6 bg-brand rounded-2xl p-6 text-center">
                         <div class="text-4xl font-bold">12+</div>
                         <div class="text-xs uppercase tracking-widest mt-1 text-froth">Years</div>
@@ -672,36 +659,39 @@
                 <div>
                     <span class="text-xs font-bold uppercase tracking-widest text-brand">About Us</span>
                     <h2 class="text-3xl md:text-5xl font-bold tracking-tight mt-4">Where Passion Meets Perfection</h2>
-                    <p class="text-creme/50 font-light mt-6 leading-relaxed">Founded in 2012, Glamour Studio has been
-                        Delhi's go-to destination for premium beauty services. With over 12 years of experience, our
-                        team of certified professionals delivers stunning results every single time.</p>
-                    <p class="text-creme/50 font-light mt-4 leading-relaxed">We believe every person deserves to feel
-                        beautiful. Whether it's a quick haircut or a full bridal transformation, we pour our heart into
-                        every service.</p>
+                    <p class="text-creme/50 font-light mt-6 leading-relaxed">
+                        Founded in 2012, Glamour Studio has been Delhi's go-to destination for premium beauty services.
+                        With over 12 years of experience, our team of certified professionals delivers stunning results
+                        every single time.
+                    </p>
+                    <p class="text-creme/50 font-light mt-4 leading-relaxed">
+                        We believe every person deserves to feel beautiful. Whether it's a quick haircut or a full
+                        bridal transformation, we pour our heart into every service.
+                    </p>
                     <div class="grid grid-cols-2 gap-6 mt-8">
-                        <div class="flex items-start gap-3"><span class="iconify text-brand text-xl mt-1"
-                                data-icon="mdi:check-circle"></span>
+                        <div class="flex items-start gap-3">
+                            <span class="iconify text-brand text-xl mt-1" data-icon="mdi:check-circle"></span>
                             <div>
                                 <div class="font-semibold text-sm">Certified Stylists</div>
                                 <div class="text-creme/40 text-xs mt-1">Professionally trained team</div>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3"><span class="iconify text-brand text-xl mt-1"
-                                data-icon="mdi:check-circle"></span>
+                        <div class="flex items-start gap-3">
+                            <span class="iconify text-brand text-xl mt-1" data-icon="mdi:check-circle"></span>
                             <div>
                                 <div class="font-semibold text-sm">Premium Products</div>
-                                <div class="text-creme/40 text-xs mt-1">L'OrÃ©al, Schwarzkopf, MAC</div>
+                                <div class="text-creme/40 text-xs mt-1">L'Oréal, Schwarzkopf, MAC</div>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3"><span class="iconify text-brand text-xl mt-1"
-                                data-icon="mdi:check-circle"></span>
+                        <div class="flex items-start gap-3">
+                            <span class="iconify text-brand text-xl mt-1" data-icon="mdi:check-circle"></span>
                             <div>
                                 <div class="font-semibold text-sm">Hygiene First</div>
                                 <div class="text-creme/40 text-xs mt-1">Sterilized tools & clean space</div>
                             </div>
                         </div>
-                        <div class="flex items-start gap-3"><span class="iconify text-brand text-xl mt-1"
-                                data-icon="mdi:check-circle"></span>
+                        <div class="flex items-start gap-3">
+                            <span class="iconify text-brand text-xl mt-1" data-icon="mdi:check-circle"></span>
                             <div>
                                 <div class="font-semibold text-sm">Affordable Luxury</div>
                                 <div class="text-creme/40 text-xs mt-1">Premium service, fair prices</div>
@@ -713,7 +703,7 @@
         </div>
     </section>
 
-    <!-- TEAM -->
+    <!-- ========== TEAM ========== -->
     <section id="team" class="py-24 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -723,7 +713,6 @@
                     vision to life.</p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
-                <!-- Priya -->
                 <div class="group text-center">
                     <div class="relative rounded-3xl overflow-hidden aspect-[3/4] mb-4">
                         <img src="team-priya.jpg"
@@ -732,16 +721,17 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-cinna/80 via-transparent to-transparent">
                         </div>
                         <div class="absolute bottom-4 left-4 right-4">
-                            <div class="flex gap-2 justify-center"><a href="#"
+                            <div class="flex gap-2 justify-center">
+                                <a href="#"
                                     class="w-8 h-8 rounded-full bg-brand/20 flex items-center justify-center hover:bg-brand transition-colors"><span
-                                        class="iconify text-sm text-froth" data-icon="mdi:instagram"></span></a></div>
+                                        class="iconify text-sm text-froth" data-icon="mdi:instagram"></span></a>
+                            </div>
                         </div>
                     </div>
                     <h3 class="text-lg font-semibold">Priya Sharma</h3>
                     <p class="text-brand text-sm font-medium">Senior Hair Stylist</p>
-                    <p class="text-creme/40 text-xs mt-1">10 Years â€¢ Haircuts, Balayage</p>
+                    <p class="text-creme/40 text-xs mt-1">10 Years • Haircuts, Balayage</p>
                 </div>
-                <!-- Neha -->
                 <div class="group text-center">
                     <div class="relative rounded-3xl overflow-hidden aspect-[3/4] mb-4">
                         <img src="team-neha.jpg"
@@ -750,16 +740,17 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-cinna/80 via-transparent to-transparent">
                         </div>
                         <div class="absolute bottom-4 left-4 right-4">
-                            <div class="flex gap-2 justify-center"><a href="#"
+                            <div class="flex gap-2 justify-center">
+                                <a href="#"
                                     class="w-8 h-8 rounded-full bg-brand/20 flex items-center justify-center hover:bg-brand transition-colors"><span
-                                        class="iconify text-sm text-froth" data-icon="mdi:instagram"></span></a></div>
+                                        class="iconify text-sm text-froth" data-icon="mdi:instagram"></span></a>
+                            </div>
                         </div>
                     </div>
                     <h3 class="text-lg font-semibold">Neha Verma</h3>
                     <p class="text-brand text-sm font-medium">Bridal Makeup Artist</p>
-                    <p class="text-creme/40 text-xs mt-1">8 Years â€¢ Bridal, Party Makeup</p>
+                    <p class="text-creme/40 text-xs mt-1">8 Years • Bridal, Party Makeup</p>
                 </div>
-                <!-- Gargi -->
                 <div class="group text-center">
                     <div class="relative rounded-3xl overflow-hidden aspect-[3/4] mb-4">
                         <img src="team-gargi.jpg"
@@ -768,16 +759,17 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-cinna/80 via-transparent to-transparent">
                         </div>
                         <div class="absolute bottom-4 left-4 right-4">
-                            <div class="flex gap-2 justify-center"><a href="#"
+                            <div class="flex gap-2 justify-center">
+                                <a href="#"
                                     class="w-8 h-8 rounded-full bg-brand/20 flex items-center justify-center hover:bg-brand transition-colors"><span
-                                        class="iconify text-sm text-froth" data-icon="mdi:instagram"></span></a></div>
+                                        class="iconify text-sm text-froth" data-icon="mdi:instagram"></span></a>
+                            </div>
                         </div>
                     </div>
-                    <h3 class="text-lg font-semibold">Gargi sharma</h3>
+                    <h3 class="text-lg font-semibold">Gargi Sharme</h3>
                     <p class="text-brand text-sm font-medium">Hair Color Specialist</p>
-                    <p class="text-creme/40 text-xs mt-1">7 Years â€¢ Highlights, Global Color</p>
+                    <p class="text-creme/40 text-xs mt-1">7 Years • Highlights, Global Color</p>
                 </div>
-                <!-- Anita -->
                 <div class="group text-center">
                     <div class="relative rounded-3xl overflow-hidden aspect-[3/4] mb-4">
                         <img src="team-anita.jpg"
@@ -786,34 +778,37 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-cinna/80 via-transparent to-transparent">
                         </div>
                         <div class="absolute bottom-4 left-4 right-4">
-                            <div class="flex gap-2 justify-center"><a href="#"
+                            <div class="flex gap-2 justify-center">
+                                <a href="#"
                                     class="w-8 h-8 rounded-full bg-brand/20 flex items-center justify-center hover:bg-brand transition-colors"><span
-                                        class="iconify text-sm text-froth" data-icon="mdi:instagram"></span></a></div>
+                                        class="iconify text-sm text-froth" data-icon="mdi:instagram"></span></a>
+                            </div>
                         </div>
                     </div>
                     <h3 class="text-lg font-semibold">Anita Singh</h3>
                     <p class="text-brand text-sm font-medium">Skin & Spa Expert</p>
-                    <p class="text-creme/40 text-xs mt-1">6 Years â€¢ Facials, Skin Treatments</p>
+                    <p class="text-creme/40 text-xs mt-1">6 Years • Facials, Skin Treatments</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- BEFORE & AFTER -->
+    <!-- ========== BEFORE & AFTER ========== -->
     <section class="py-24 px-6 bg-[#0F0C08]">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <span class="text-xs font-bold uppercase tracking-widest text-brand">Transformations</span>
                 <h2 class="text-3xl md:text-5xl font-bold tracking-tight mt-4">Before & After</h2>
                 <p class="text-creme/50 mt-4 max-w-2xl mx-auto font-light">Drag the slider to see real transformations.
-                </p>
+                    Results that speak for themselves.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 reveal">
                 <div>
                     <div class="ba-slider rounded-3xl aspect-[4/3] relative" data-slider>
-                        <img src="makeup-after-1.png" class="w-full h-full object-cover rounded-3xl" alt="After">
+                        <img src="hair after 1.png" class="w-full h-full object-cover rounded-3xl" alt="After">
                         <div class="ba-after rounded-3xl">
-                            <img src="makeup-before-1.png" class="w-full h-full object-cover rounded-3xl" alt="Before">
+                            <img src="hair before 1.png" class="w-full h-full object-cover rounded-3xl"
+                                alt="Before">
                         </div>
                         <div class="ba-handle"></div>
                         <div
@@ -827,9 +822,11 @@
                 </div>
                 <div>
                     <div class="ba-slider rounded-3xl aspect-[4/3] relative" data-slider>
-                        <img src="makeup-after-2.png" class="w-full h-full object-cover rounded-3xl" alt="After">
+                        <img src="Bridal Makeup after 1.png" class="w-full h-full object-cover rounded-3xl"
+                            alt="After">
                         <div class="ba-after rounded-3xl">
-                            <img src="makeup-before-2.png" class="w-full h-full object-cover rounded-3xl" alt="Before">
+                            <img src="Bridal Makeup before 1.png" class="w-full h-full object-cover rounded-3xl"
+                                alt="Before">
                         </div>
                         <div class="ba-handle"></div>
                         <div
@@ -845,7 +842,7 @@
         </div>
     </section>
 
-    <!-- OFFERS -->
+    <!-- ========== OFFERS ========== -->
     <section id="offers" class="py-24 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -864,13 +861,15 @@
                     <h3 class="text-xl font-bold">Bridal Package</h3>
                     <p class="text-creme/50 text-sm mt-2 font-light">Engagement + Mehendi + Wedding day makeup with
                         draping & hairstyling</p>
-                    <div class="mt-4 flex items-baseline gap-2"><span
-                            class="text-3xl font-bold text-brand">â‚¹14,999</span><span
-                            class="text-creme/30 line-through text-sm">â‚¹22,000</span></div>
-                    <a href="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%20Bridal%20Package%20at%20â‚¹14,999"
+                    <div class="mt-4 flex items-baseline gap-2">
+                        <span class="text-3xl font-bold text-brand">₹14,999</span>
+                        <span class="text-creme/30 line-through text-sm">₹22,000</span>
+                    </div>
+                    <a href="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%20Bridal%20Package%20at%20₹14,999"
                         target="_blank"
-                        class="mt-6 w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-brand hover:bg-brand-light text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all"><span
-                            class="iconify" data-icon="mdi:whatsapp"></span> Book on WhatsApp</a>
+                        class="mt-6 w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-brand hover:bg-brand-light text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all">
+                        <span class="iconify" data-icon="mdi:whatsapp"></span> Book on WhatsApp
+                    </a>
                 </div>
                 <div
                     class="relative rounded-3xl border border-brand/10 bg-brand/[0.03] p-8 hover:-translate-y-1 transition-all duration-300">
@@ -878,13 +877,15 @@
                     <h3 class="text-xl font-bold">Monthly Grooming</h3>
                     <p class="text-creme/50 text-sm mt-2 font-light">4 haircuts + 2 facials + 2 hair spa sessions per
                         month</p>
-                    <div class="mt-4 flex items-baseline gap-2"><span
-                            class="text-3xl font-bold text-brand">â‚¹2,999</span><span
-                            class="text-creme/30 line-through text-sm">â‚¹5,400</span></div>
+                    <div class="mt-4 flex items-baseline gap-2">
+                        <span class="text-3xl font-bold text-brand">₹2,999</span>
+                        <span class="text-creme/30 line-through text-sm">₹5,400</span>
+                    </div>
                     <a href="https://wa.me/919876543210?text=Hi!%20I'm%20interested%20in%20the%20Monthly%20Grooming%20Package"
                         target="_blank"
-                        class="mt-6 w-full inline-flex items-center justify-center gap-2 px-5 py-3 border border-brand/20 hover:bg-brand/10 text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all"><span
-                            class="iconify" data-icon="mdi:whatsapp"></span> Book on WhatsApp</a>
+                        class="mt-6 w-full inline-flex items-center justify-center gap-2 px-5 py-3 border border-brand/20 hover:bg-brand/10 text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all">
+                        <span class="iconify" data-icon="mdi:whatsapp"></span> Book on WhatsApp
+                    </a>
                 </div>
                 <div
                     class="relative rounded-3xl border border-brand/10 bg-brand/[0.03] p-8 hover:-translate-y-1 transition-all duration-300">
@@ -892,11 +893,14 @@
                     <h3 class="text-xl font-bold">Festival Offer</h3>
                     <p class="text-creme/50 text-sm mt-2 font-light">30% off on all hair color & makeup services this
                         festive season</p>
-                    <div class="mt-4"><span class="text-3xl font-bold text-brand">30% OFF</span></div>
+                    <div class="mt-4">
+                        <span class="text-3xl font-bold text-brand">30% OFF</span>
+                    </div>
                     <a href="https://wa.me/919876543210?text=Hi!%20I%20want%20to%20avail%20the%20Festival%20Offer%20of%2030%25%20off"
                         target="_blank"
-                        class="mt-6 w-full inline-flex items-center justify-center gap-2 px-5 py-3 border border-brand/20 hover:bg-brand/10 text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all"><span
-                            class="iconify" data-icon="mdi:whatsapp"></span> Book on WhatsApp</a>
+                        class="mt-6 w-full inline-flex items-center justify-center gap-2 px-5 py-3 border border-brand/20 hover:bg-brand/10 text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all">
+                        <span class="iconify" data-icon="mdi:whatsapp"></span> Book on WhatsApp
+                    </a>
                 </div>
                 <div
                     class="relative rounded-3xl border border-brand/10 bg-brand/[0.03] p-8 hover:-translate-y-1 transition-all duration-300">
@@ -907,32 +911,37 @@
                     <h3 class="text-xl font-bold">First Visit Discount</h3>
                     <p class="text-creme/50 text-sm mt-2 font-light">First time at Glamour Studio? Get flat 20% off on
                         any service!</p>
-                    <div class="mt-4"><span class="text-3xl font-bold text-brand">20% OFF</span></div>
+                    <div class="mt-4">
+                        <span class="text-3xl font-bold text-brand">20% OFF</span>
+                    </div>
                     <a href="https://wa.me/919876543210?text=Hi!%20I'm%20a%20first-time%20customer%20and%20want%20the%2020%25%20discount"
                         target="_blank"
-                        class="mt-6 w-full inline-flex items-center justify-center gap-2 px-5 py-3 border border-brand/20 hover:bg-brand/10 text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all"><span
-                            class="iconify" data-icon="mdi:whatsapp"></span> Claim Offer</a>
+                        class="mt-6 w-full inline-flex items-center justify-center gap-2 px-5 py-3 border border-brand/20 hover:bg-brand/10 text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all">
+                        <span class="iconify" data-icon="mdi:whatsapp"></span> Claim Offer
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- REVIEWS -->
+    <!-- ========== REVIEWS ========== -->
     <section id="reviews" class="py-24 px-6 bg-[#0F0C08]">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <span class="text-xs font-bold uppercase tracking-widest text-brand">Testimonials</span>
                 <h2 class="text-3xl md:text-5xl font-bold tracking-tight mt-4">What Our Clients Say</h2>
-                <p class="text-creme/50 mt-4 max-w-2xl mx-auto font-light">Real reviews from real clients. 4.9â˜… on
+                <p class="text-creme/50 mt-4 max-w-2xl mx-auto font-light">Real reviews from real clients. 4.9★ on
                     Google with 500+ reviews.</p>
             </div>
             <div class="grid md:grid-cols-3 gap-6 reveal">
                 <div
                     class="rounded-3xl border border-brand/10 bg-brand/[0.03] p-8 hover:-translate-y-1 transition-all duration-300">
-                    <div class="flex gap-1 mb-4"><span class="iconify text-brand" data-icon="mdi:star"></span><span
-                            class="iconify text-brand" data-icon="mdi:star"></span><span class="iconify text-brand"
-                            data-icon="mdi:star"></span><span class="iconify text-brand"
-                            data-icon="mdi:star"></span><span class="iconify text-brand" data-icon="mdi:star"></span>
+                    <div class="flex gap-1 mb-4">
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
                     </div>
                     <p class="text-creme/60 font-light leading-relaxed">"Got my bridal makeup done from Glamour Studio
                         and I was literally in tears seeing myself. Priya and her team made my wedding day so special.
@@ -949,10 +958,12 @@
                 </div>
                 <div
                     class="rounded-3xl border border-brand/10 bg-brand/[0.03] p-8 hover:-translate-y-1 transition-all duration-300">
-                    <div class="flex gap-1 mb-4"><span class="iconify text-brand" data-icon="mdi:star"></span><span
-                            class="iconify text-brand" data-icon="mdi:star"></span><span class="iconify text-brand"
-                            data-icon="mdi:star"></span><span class="iconify text-brand"
-                            data-icon="mdi:star"></span><span class="iconify text-brand" data-icon="mdi:star"></span>
+                    <div class="flex gap-1 mb-4">
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
                     </div>
                     <p class="text-creme/60 font-light leading-relaxed">"Best hair color I've ever got! Rahul understood
                         exactly what I wanted. The balayage turned out even better than the reference photo. Amazing
@@ -969,11 +980,13 @@
                 </div>
                 <div
                     class="rounded-3xl border border-brand/10 bg-brand/[0.03] p-8 hover:-translate-y-1 transition-all duration-300">
-                    <div class="flex gap-1 mb-4"><span class="iconify text-brand" data-icon="mdi:star"></span><span
-                            class="iconify text-brand" data-icon="mdi:star"></span><span class="iconify text-brand"
-                            data-icon="mdi:star"></span><span class="iconify text-brand"
-                            data-icon="mdi:star"></span><span class="iconify text-brand"
-                            data-icon="mdi:star-half-full"></span></div>
+                    <div class="flex gap-1 mb-4">
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
+                        <span class="iconify text-brand" data-icon="mdi:star"></span>
+                        <span class="iconify text-brand" data-icon="mdi:star-half-full"></span>
+                    </div>
                     <p class="text-creme/60 font-light leading-relaxed">"I've been getting my monthly grooming done here
                         for over 2 years. The staff is super friendly, the place is always clean, and the facial is
                         absolutely relaxing. Love it!"</p>
@@ -991,7 +1004,7 @@
         </div>
     </section>
 
-    <!-- BOOKING -->
+    <!-- ========== BOOKING FORM ========== -->
     <section id="booking" class="py-24 px-6 relative">
         <div class="absolute inset-0 bg-gradient-to-b from-brand/5 to-transparent pointer-events-none"></div>
         <div class="max-w-7xl mx-auto relative">
@@ -1005,19 +1018,34 @@
                 <div class="md:col-span-3 rounded-3xl border border-brand/10 bg-brand/[0.03] p-8 md:p-12">
                     <form id="bookingForm" onsubmit="handleBooking(event)">
                         <div class="grid md:grid-cols-2 gap-6">
-                            <div><label
-                                    class="text-xs font-bold uppercase tracking-widest text-creme/50 mb-2 block">Your
-                                    Name *</label><input type="text" name="name" required
+                            <div>
+                                <label class="text-xs font-bold uppercase tracking-widest text-creme/50 mb-2 block">Your
+                                    Name *</label>
+                                <input type="text" name="from_name" required
                                     class="w-full bg-cinna/30 border border-brand/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-brand/40 transition-colors placeholder:text-creme/20"
-                                    placeholder="Enter your name"></div>
-                            <div><label
+                                    placeholder="Enter your name">
+                            </div>
+                            <div>
+                                <label
                                     class="text-xs font-bold uppercase tracking-widest text-creme/50 mb-2 block">Phone
-                                    Number *</label><input type="tel" name="phone" required
+                                    Number *</label>
+                                <input type="tel" name="from_phone" required
                                     class="w-full bg-cinna/30 border border-brand/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-brand/40 transition-colors placeholder:text-creme/20"
-                                    placeholder="+91 98765 43210"></div>
-                            <div><label
+                                    placeholder="+91 98765 43210">
+                            </div>
+                            <div>
+                                <label
+                                    class="text-xs font-bold uppercase tracking-widest text-creme/50 mb-2 block">Email
+                                    (for confirmation)</label>
+                                <input type="email" name="reply_to"
+                                    class="w-full bg-cinna/30 border border-brand/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-brand/40 transition-colors placeholder:text-creme/20"
+                                    placeholder="your@email.com">
+                            </div>
+                            <div>
+                                <label
                                     class="text-xs font-bold uppercase tracking-widest text-creme/50 mb-2 block">Service
-                                    Required *</label><select name="service" required
+                                    Required *</label>
+                                <select name="service" required
                                     class="w-full bg-cinna/30 border border-brand/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-brand/40 transition-colors appearance-none cursor-pointer">
                                     <option value="" class="bg-cinna">Select a service</option>
                                     <option value="Haircut" class="bg-cinna">Haircut</option>
@@ -1028,25 +1056,33 @@
                                     <option value="Bridal Makeup" class="bg-cinna">Bridal Makeup</option>
                                     <option value="Manicure / Pedicure" class="bg-cinna">Manicure / Pedicure</option>
                                     <option value="Waxing / Threading" class="bg-cinna">Waxing / Threading</option>
-                                </select></div>
-                            <div><label
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label
                                     class="text-xs font-bold uppercase tracking-widest text-creme/50 mb-2 block">Preferred
-                                    Date & Time *</label><input type="datetime-local" name="datetime" required
+                                    Date & Time *</label>
+                                <input type="datetime-local" name="datetime" required
                                     class="w-full bg-cinna/30 border border-brand/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-brand/40 transition-colors">
                             </div>
                         </div>
-                        <div class="mt-6"><label
-                                class="text-xs font-bold uppercase tracking-widest text-creme/50 mb-2 block">Message
-                                (Optional)</label><textarea name="message" rows="3"
+                        <div class="mt-6">
+                            <label class="text-xs font-bold uppercase tracking-widest text-creme/50 mb-2 block">Message
+                                (Optional)</label>
+                            <textarea name="message" rows="3"
                                 class="w-full bg-cinna/30 border border-brand/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-brand/40 transition-colors placeholder:text-creme/20 resize-none"
-                                placeholder="Any special requests or questions..."></textarea></div>
+                                placeholder="Any special requests or questions..."></textarea>
+                        </div>
                         <div class="mt-8 flex flex-col sm:flex-row gap-4">
                             <button type="submit"
-                                class="flex-1 px-8 py-4 bg-brand hover:bg-brand-light text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all duration-150 hover:scale-105">Book
-                                Appointment</button>
+                                class="flex-1 px-8 py-4 bg-brand hover:bg-brand-light text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all duration-150 hover:scale-105">
+                                Book Appointment
+                            </button>
                             <button type="button" onclick="bookViaWhatsApp()"
-                                class="flex-1 px-8 py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all duration-150 hover:scale-105 flex items-center justify-center gap-2"><span
-                                    class="iconify text-lg" data-icon="mdi:whatsapp"></span> WhatsApp Booking</button>
+                                class="flex-1 px-8 py-4 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all duration-150 hover:scale-105 flex items-center justify-center gap-2">
+                                <span class="iconify text-lg" data-icon="mdi:whatsapp"></span>
+                                WhatsApp Booking
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -1054,28 +1090,30 @@
                     <div class="rounded-3xl border border-brand/10 bg-brand/[0.03] p-8">
                         <h3 class="text-lg font-bold mb-4">Quick Booking</h3>
                         <p class="text-creme/50 text-sm font-light mb-6">Prefer chatting? Send us a WhatsApp message and
-                            we'll confirm your appointment in minutes!</p><a
-                            href="https://wa.me/919876543210?text=Hi%20Glamour%20Studio!%20I'd%20like%20to%20book%20an%20appointment."
+                            we'll confirm your appointment in minutes!</p>
+                        <a href="https://wa.me/919876543210?text=Hi%20Glamour%20Studio!%20I'd%20like%20to%20book%20an%20appointment."
                             target="_blank"
-                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all hover:scale-105"><span
-                                class="iconify text-lg" data-icon="mdi:whatsapp"></span> Chat & Book Now</a>
+                            class="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all hover:scale-105">
+                            <span class="iconify text-lg" data-icon="mdi:whatsapp"></span> Chat & Book Now
+                        </a>
                     </div>
                     <div class="rounded-3xl border border-brand/10 bg-brand/[0.03] p-8">
                         <h3 class="text-lg font-bold mb-4">Salon Hours</h3>
                         <div class="space-y-3 text-sm">
-                            <div class="flex justify-between"><span class="text-creme/50">Mon â€“ Fri</span><span
-                                    class="font-medium text-creme">10:00 AM â€“ 8:00 PM</span></div>
+                            <div class="flex justify-between"><span class="text-creme/50">Mon – Fri</span><span
+                                    class="font-medium text-creme">10:00 AM – 8:00 PM</span></div>
                             <div class="flex justify-between"><span class="text-creme/50">Saturday</span><span
-                                    class="font-medium text-creme">9:00 AM â€“ 9:00 PM</span></div>
+                                    class="font-medium text-creme">9:00 AM – 9:00 PM</span></div>
                             <div class="flex justify-between"><span class="text-creme/50">Sunday</span><span
-                                    class="font-medium text-creme">9:00 AM â€“ 6:00 PM</span></div>
+                                    class="font-medium text-creme">9:00 AM – 6:00 PM</span></div>
                         </div>
                     </div>
                     <div class="rounded-3xl border border-brand/15 bg-brand/5 p-8">
-                        <div class="flex items-center gap-3 mb-3"><span class="iconify text-brand text-2xl"
-                                data-icon="mdi:phone"></span>
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="iconify text-brand text-2xl" data-icon="mdi:phone"></span>
                             <h3 class="text-lg font-bold">Call Us</h3>
-                        </div><a href="tel:+919876543210"
+                        </div>
+                        <a href="tel:+919876543210"
                             class="text-brand text-xl font-bold hover:text-brand-light transition-colors">+91 98765
                             43210</a>
                     </div>
@@ -1084,7 +1122,7 @@
         </div>
     </section>
 
-    <!-- INSTAGRAM -->
+    <!-- ========== INSTAGRAM FEED ========== -->
     <section class="py-24 px-6 bg-[#0F0C08]">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 reveal">
@@ -1095,51 +1133,6 @@
             </div>
             <div class="flex gap-4 overflow-x-auto insta-scroll pb-4 reveal">
                 <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
-                    <img src="makeup-after-1.png"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        style="filter: sepia(0.08);">
-                    <div
-                        class="absolute inset-0 bg-brand/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span class="iconify text-froth text-3xl" data-icon="mdi:instagram"></span>
-                    </div>
-                </div>
-                <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
-                    <img src="makeup-after-2.png"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        style="filter: sepia(0.08);">
-                    <div
-                        class="absolute inset-0 bg-brand/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span class="iconify text-froth text-3xl" data-icon="mdi:instagram"></span>
-                    </div>
-                </div>
-                <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
-                    <img src="haircut-gallery.jpg"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        style="filter: sepia(0.08);">
-                    <div
-                        class="absolute inset-0 bg-brand/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span class="iconify text-froth text-3xl" data-icon="mdi:instagram"></span>
-                    </div>
-                </div>
-                <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
-                    <img src="hair-color.jpg"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        style="filter: sepia(0.08);">
-                    <div
-                        class="absolute inset-0 bg-brand/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span class="iconify text-froth text-3xl" data-icon="mdi:instagram"></span>
-                    </div>
-                </div>
-                <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
-                    <img src="hair-spa.jpg"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        style="filter: sepia(0.08);">
-                    <div
-                        class="absolute inset-0 bg-brand/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span class="iconify text-froth text-3xl" data-icon="mdi:instagram"></span>
-                    </div>
-                </div>
-                <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
                     <img src="bridal-makeup.jpg"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         style="filter: sepia(0.08);">
@@ -1148,11 +1141,56 @@
                         <span class="iconify text-froth text-3xl" data-icon="mdi:instagram"></span>
                     </div>
                 </div>
+                <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
+                    <img src="makeup.jpg"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        style="filter: sepia(0.08);">
+                    <div
+                        class="absolute inset-0 bg-brand/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="iconify text-froth text-3xl" data-icon="mdi:instagram"></span>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
+                    <img src="Bridal Makeup after 1.png"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        style="filter: sepia(0.08);">
+                    <div
+                        class="absolute inset-0 bg-brand/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="iconify text-froth text-3xl" data-icon="mdi:instagram"></span>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
+                    <img src="hair after 1.png"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        style="filter: sepia(0.08);">
+                    <div
+                        class="absolute inset-0 bg-brand/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="iconify text-froth text-3xl" data-icon="mdi:instagram"></span>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
+                    <img src="makeup-gallery.jpg"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        style="filter: sepia(0.08);">
+                    <div
+                        class="absolute inset-0 bg-brand/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="iconify text-froth text-3xl" data-icon="mdi:instagram"></span>
+                    </div>
+                </div>
+                <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
+                    <img src="team-neha.jpg"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        style="filter: sepia(0.08);">
+                    <div
+                        class="absolute inset-0 bg-brand/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="iconify text-froth text-3xl" data-icon="mdi:instagram"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- ========== FAQ ========== -->
     <section id="faq" class="py-24 px-6">
         <div class="max-w-3xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -1160,79 +1198,88 @@
                 <h2 class="text-3xl md:text-5xl font-bold tracking-tight mt-4">Common Questions</h2>
             </div>
             <div class="space-y-3 reveal">
-                <div class="faq-item rounded-2xl border border-brand/10 overflow-hidden"><button
-                        onclick="toggleFaq(this)"
-                        class="w-full flex items-center justify-between p-6 text-left hover:bg-brand/[0.03] transition-colors"><span
-                            class="font-semibold pr-4">Do I need an appointment or can I walk in?</span><span
+                <div class="faq-item rounded-2xl border border-brand/10 overflow-hidden">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full flex items-center justify-between p-6 text-left hover:bg-brand/[0.03] transition-colors">
+                        <span class="font-semibold pr-4">Do I need an appointment or can I walk in?</span>
+                        <span
                             class="iconify text-xl text-brand flex-shrink-0 faq-icon transition-transform duration-300"
-                            data-icon="mdi:plus"></span></button>
+                            data-icon="mdi:plus"></span>
+                    </button>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
                         <p class="px-6 pb-6 text-creme/50 font-light">We accept both walk-ins and appointments. However,
                             we recommend booking in advance, especially on weekends and for bridal services, to avoid
                             waiting and ensure your preferred stylist is available.</p>
                     </div>
                 </div>
-                <div class="faq-item rounded-2xl border border-brand/10 overflow-hidden"><button
-                        onclick="toggleFaq(this)"
-                        class="w-full flex items-center justify-between p-6 text-left hover:bg-brand/[0.03] transition-colors"><span
-                            class="font-semibold pr-4">What are the bridal package prices?</span><span
+                <div class="faq-item rounded-2xl border border-brand/10 overflow-hidden">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full flex items-center justify-between p-6 text-left hover:bg-brand/[0.03] transition-colors">
+                        <span class="font-semibold pr-4">What are the bridal package prices?</span>
+                        <span
                             class="iconify text-xl text-brand flex-shrink-0 faq-icon transition-transform duration-300"
-                            data-icon="mdi:plus"></span></button>
+                            data-icon="mdi:plus"></span>
+                    </button>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="px-6 pb-6 text-creme/50 font-light">Our bridal packages start from â‚¹14,999 (includes
+                        <p class="px-6 pb-6 text-creme/50 font-light">Our bridal packages start from ₹14,999 (includes
                             engagement, mehendi & wedding day). We also offer premium bridal packages with luxury
-                            products starting at â‚¹24,999. Contact us for a customized quote based on your
-                            requirements.
+                            products starting at ₹24,999. Contact us for a customized quote based on your requirements.
                         </p>
                     </div>
                 </div>
-                <div class="faq-item rounded-2xl border border-brand/10 overflow-hidden"><button
-                        onclick="toggleFaq(this)"
-                        class="w-full flex items-center justify-between p-6 text-left hover:bg-brand/[0.03] transition-colors"><span
-                            class="font-semibold pr-4">Is home service available?</span><span
+                <div class="faq-item rounded-2xl border border-brand/10 overflow-hidden">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full flex items-center justify-between p-6 text-left hover:bg-brand/[0.03] transition-colors">
+                        <span class="font-semibold pr-4">Is home service available?</span>
+                        <span
                             class="iconify text-xl text-brand flex-shrink-0 faq-icon transition-transform duration-300"
-                            data-icon="mdi:plus"></span></button>
+                            data-icon="mdi:plus"></span>
+                    </button>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
                         <p class="px-6 pb-6 text-creme/50 font-light">Yes! We offer home service for bridal makeup and
-                            party makeup within a 10km radius. Home service charges are â‚¹500 extra for nearby areas.
+                            party makeup within a 10km radius. Home service charges are ₹500 extra for nearby areas.
                             Please book at least 2 days in advance for home services.</p>
                     </div>
                 </div>
-                <div class="faq-item rounded-2xl border border-brand/10 overflow-hidden"><button
-                        onclick="toggleFaq(this)"
-                        class="w-full flex items-center justify-between p-6 text-left hover:bg-brand/[0.03] transition-colors"><span
-                            class="font-semibold pr-4">What are the salon timings?</span><span
+                <div class="faq-item rounded-2xl border border-brand/10 overflow-hidden">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full flex items-center justify-between p-6 text-left hover:bg-brand/[0.03] transition-colors">
+                        <span class="font-semibold pr-4">What are the salon timings?</span>
+                        <span
                             class="iconify text-xl text-brand flex-shrink-0 faq-icon transition-transform duration-300"
-                            data-icon="mdi:plus"></span></button>
+                            data-icon="mdi:plus"></span>
+                    </button>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="px-6 pb-6 text-creme/50 font-light">Monday to Friday: 10:00 AM â€“ 8:00 PM, Saturday:
-                            9:00 AM â€“ 9:00 PM, Sunday: 9:00 AM â€“ 6:00 PM. On special festival days, timings may vary
-                            â€”
+                        <p class="px-6 pb-6 text-creme/50 font-light">Monday to Friday: 10:00 AM – 8:00 PM, Saturday:
+                            9:00 AM – 9:00 PM, Sunday: 9:00 AM – 6:00 PM. On special festival days, timings may vary —
                             please check our Instagram or WhatsApp for updates.</p>
                     </div>
                 </div>
-                <div class="faq-item rounded-2xl border border-brand/10 overflow-hidden"><button
-                        onclick="toggleFaq(this)"
-                        class="w-full flex items-center justify-between p-6 text-left hover:bg-brand/[0.03] transition-colors"><span
-                            class="font-semibold pr-4">Which products do you use?</span><span
+                <div class="faq-item rounded-2xl border border-brand/10 overflow-hidden">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full flex items-center justify-between p-6 text-left hover:bg-brand/[0.03] transition-colors">
+                        <span class="font-semibold pr-4">Which products do you use?</span>
+                        <span
                             class="iconify text-xl text-brand flex-shrink-0 faq-icon transition-transform duration-300"
-                            data-icon="mdi:plus"></span></button>
+                            data-icon="mdi:plus"></span>
+                    </button>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
-                        <p class="px-6 pb-6 text-creme/50 font-light">We use only premium, salon-grade products:
-                            L'OrÃ©al
+                        <p class="px-6 pb-6 text-creme/50 font-light">We use only premium, salon-grade products: L'Oréal
                             Professional, Schwarzkopf, and Wella for hair; MAC, Bobbi Brown for makeup; and O3+ for
                             facials. We also offer organic/hypoallergenic options on request.</p>
                     </div>
                 </div>
-                <div class="faq-item rounded-2xl border border-brand/10 overflow-hidden"><button
-                        onclick="toggleFaq(this)"
-                        class="w-full flex items-center justify-between p-6 text-left hover:bg-brand/[0.03] transition-colors"><span
-                            class="font-semibold pr-4">Can I cancel or reschedule my appointment?</span><span
+                <div class="faq-item rounded-2xl border border-brand/10 overflow-hidden">
+                    <button onclick="toggleFaq(this)"
+                        class="w-full flex items-center justify-between p-6 text-left hover:bg-brand/[0.03] transition-colors">
+                        <span class="font-semibold pr-4">Can I cancel or reschedule my appointment?</span>
+                        <span
                             class="iconify text-xl text-brand flex-shrink-0 faq-icon transition-transform duration-300"
-                            data-icon="mdi:plus"></span></button>
+                            data-icon="mdi:plus"></span>
+                    </button>
                     <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
                         <p class="px-6 pb-6 text-creme/50 font-light">Yes, you can cancel or reschedule up to 4 hours
-                            before your appointment at no charge. Late cancellations may incur a â‚¹200 fee. Simply
+                            before your appointment at no charge. Late cancellations may incur a ₹200 fee. Simply
                             message us on WhatsApp to make changes.</p>
                     </div>
                 </div>
@@ -1240,7 +1287,7 @@
         </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- ========== MAP & CONTACT ========== -->
     <section id="contact" class="py-24 px-6 bg-[#0F0C08]">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
@@ -1301,8 +1348,8 @@
                                 <div>
                                     <div class="text-xs font-bold uppercase tracking-widest text-creme/40 mb-1">Hours
                                     </div>
-                                    <div class="text-sm font-medium text-creme/60">Monâ€“Fri: 10AMâ€“8PM</div>
-                                    <div class="text-sm font-medium text-creme/60">Sat: 9AMâ€“9PM | Sun: 9AMâ€“6PM</div>
+                                    <div class="text-sm font-medium text-creme/60">Mon–Fri: 10AM–8PM</div>
+                                    <div class="text-sm font-medium text-creme/60">Sat: 9AM–9PM | Sun: 9AM–6PM</div>
                                 </div>
                             </div>
                             <a href="https://instagram.com/glamourstudio" target="_blank"
@@ -1325,42 +1372,48 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ========== FOOTER ========== -->
     <footer class="py-16 px-6 border-t border-brand/10">
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-4 gap-12 mb-12">
                 <div>
                     <div class="flex items-center gap-2 mb-4">
-                        <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center"><span
-                                class="iconify text-white text-sm" data-icon="mdi:scissors-cutting"></span></div><span
-                            class="font-bold text-lg">Glamour Studio</span>
+                        <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center">
+                            <span class="iconify text-white text-sm" data-icon="mdi:scissors-cutting"></span>
+                        </div>
+                        <span class="font-bold text-lg">Glamour Studio</span>
                     </div>
                     <p class="text-creme/30 text-sm font-light leading-relaxed">Premium salon & beauty lounge in the
                         heart of Delhi. Where beauty meets glamour since 2012.</p>
                 </div>
                 <div>
                     <h4 class="text-xs font-bold uppercase tracking-widest text-creme/50 mb-4">Quick Links</h4>
-                    <div class="space-y-3"><a href="#services"
-                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Services</a><a
-                            href="#pricing"
-                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Pricing</a><a
-                            href="#gallery"
-                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Gallery</a><a
-                            href="#team" class="block text-sm text-creme/30 hover:text-brand transition-colors">Our
-                            Stylists</a><a href="#offers"
-                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Offers</a></div>
+                    <div class="space-y-3">
+                        <a href="#services"
+                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Services</a>
+                        <a href="#pricing"
+                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Pricing</a>
+                        <a href="#gallery"
+                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Gallery</a>
+                        <a href="#team" class="block text-sm text-creme/30 hover:text-brand transition-colors">Our
+                            Stylists</a>
+                        <a href="#offers"
+                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Offers</a>
+                    </div>
                 </div>
                 <div>
                     <h4 class="text-xs font-bold uppercase tracking-widest text-creme/50 mb-4">Services</h4>
-                    <div class="space-y-3"><a href="#" onclick="openServiceModal('haircut')"
-                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Haircut &
-                            Styling</a><a href="#" onclick="openServiceModal('bridal')"
-                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Bridal Makeup</a><a
-                            href="#" onclick="openServiceModal('haircolor')"
-                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Hair Color</a><a
-                            href="#" onclick="openServiceModal('facial')"
+                    <div class="space-y-3">
+                        <a href="#" onclick="openServiceModal('haircut')"
+                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Haircut & Styling</a>
+                        <a href="#" onclick="openServiceModal('bridal')"
+                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Bridal Makeup</a>
+                        <a href="#" onclick="openServiceModal('haircolor')"
+                            class="block text-sm text-creme/30 hover:text-brand transition-colors">Hair Color</a>
+                        <a href="#" onclick="openServiceModal('facial')"
                             class="block text-sm text-creme/30 hover:text-brand transition-colors">Facial & Skin
-                            Care</a><a href="#" onclick="openServiceModal('hairspa')"
+                            Care</a>
+                        <a href="#" onclick="openServiceModal('hairspa')"
                             class="block text-sm text-creme/30 hover:text-brand transition-colors">Hair Treatment</a>
                     </div>
                 </div>
@@ -1368,54 +1421,61 @@
                     <h4 class="text-xs font-bold uppercase tracking-widest text-creme/50 mb-4">Connect</h4>
                     <div class="flex gap-3">
                         <a href="https://instagram.com/glamourstudio" target="_blank"
-                            class="w-10 h-10 rounded-full border border-brand/15 flex items-center justify-center hover:bg-brand hover:border-brand transition-all"><span
-                                class="iconify text-sm" data-icon="mdi:instagram"></span></a>
+                            class="w-10 h-10 rounded-full border border-brand/15 flex items-center justify-center hover:bg-brand hover:border-brand transition-all">
+                            <span class="iconify text-sm" data-icon="mdi:instagram"></span>
+                        </a>
                         <a href="https://facebook.com/glamourstudio" target="_blank"
-                            class="w-10 h-10 rounded-full border border-brand/15 flex items-center justify-center hover:bg-brand hover:border-brand transition-all"><span
-                                class="iconify text-sm" data-icon="mdi:facebook"></span></a>
+                            class="w-10 h-10 rounded-full border border-brand/15 flex items-center justify-center hover:bg-brand hover:border-brand transition-all">
+                            <span class="iconify text-sm" data-icon="mdi:facebook"></span>
+                        </a>
                         <a href="https://wa.me/919876543210" target="_blank"
-                            class="w-10 h-10 rounded-full border border-[#25D366]/30 flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] transition-all"><span
-                                class="iconify text-sm" data-icon="mdi:whatsapp"></span></a>
+                            class="w-10 h-10 rounded-full border border-[#25D366]/30 flex items-center justify-center hover:bg-[#25D366] hover:border-[#25D366] transition-all">
+                            <span class="iconify text-sm" data-icon="mdi:whatsapp"></span>
+                        </a>
                         <a href="https://youtube.com/@glamourstudio" target="_blank"
-                            class="w-10 h-10 rounded-full border border-brand/15 flex items-center justify-center hover:bg-brand hover:border-brand transition-all"><span
-                                class="iconify text-sm" data-icon="mdi:youtube"></span></a>
+                            class="w-10 h-10 rounded-full border border-brand/15 flex items-center justify-center hover:bg-brand hover:border-brand transition-all">
+                            <span class="iconify text-sm" data-icon="mdi:youtube"></span>
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="border-t border-brand/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p class="text-creme/20 text-xs">Â© 2025 Glamour Studio. All rights reserved.</p>
-                <p class="text-creme/20 text-xs">Made with <span class="text-brand">â™¥</span> for beauty lovers</p>
+                <p class="text-creme/20 text-xs">© 2025 Glamour Studio. All rights reserved.</p>
+                <p class="text-creme/20 text-xs">Made with <span class="text-brand">♥</span> for beauty lovers</p>
             </div>
         </div>
     </footer>
 
-    <!-- FLOATING WHATSAPP -->
+    <!-- ========== FLOATING WHATSAPP ========== -->
     <a href="https://wa.me/919876543210?text=Hi%20Glamour%20Studio!%20I'd%20like%20to%20know%20more%20about%20your%20services."
         target="_blank"
         class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl whatsapp-float hover:scale-110 transition-transform">
         <span class="iconify text-white text-3xl" data-icon="mdi:whatsapp"></span>
     </a>
 
-    <!-- LIGHTBOX -->
+    <!-- ========== LIGHTBOX ========== -->
     <div id="lightbox" class="lightbox fixed inset-0 z-[100] bg-cinna/90 flex items-center justify-center p-6"
         onclick="closeLightbox()">
         <button class="absolute top-6 right-6 text-froth/60 hover:text-white transition-colors"
-            onclick="closeLightbox()"><span class="iconify text-3xl" data-icon="mdi:close"></span></button>
+            onclick="closeLightbox()">
+            <span class="iconify text-3xl" data-icon="mdi:close"></span>
+        </button>
         <img id="lightboxImg" src="" class="max-w-full max-h-[85vh] object-contain rounded-2xl"
             onclick="event.stopPropagation()">
     </div>
 
-    <!-- SERVICE MODAL -->
+    <!-- ========== SERVICE MODAL ========== -->
     <div id="serviceModal"
         class="service-modal fixed inset-0 z-[90] bg-cinna/80 flex items-center justify-center p-6 nav-blur"
         onclick="closeServiceModal()">
         <div class="bg-[#1A1410] rounded-3xl max-w-2xl w-full max-h-[85vh] overflow-y-auto"
             onclick="event.stopPropagation()">
             <div class="relative">
-                <img id="modalImg" src="#" class="w-full h-64 object-cover rounded-t-3xl" style="filter: sepia(0.08);">
+                <img id="modalImg" src="" class="w-full h-64 object-cover rounded-t-3xl" style="filter: sepia(0.08);">
                 <button onclick="closeServiceModal()"
-                    class="absolute top-4 right-4 w-10 h-10 rounded-full bg-cinna/70 flex items-center justify-center hover:bg-brand transition-colors"><span
-                        class="iconify text-xl" data-icon="mdi:close"></span></button>
+                    class="absolute top-4 right-4 w-10 h-10 rounded-full bg-cinna/70 flex items-center justify-center hover:bg-brand transition-colors">
+                    <span class="iconify text-xl" data-icon="mdi:close"></span>
+                </button>
             </div>
             <div class="p-8">
                 <h3 id="modalTitle" class="text-2xl font-bold mb-4"></h3>
@@ -1425,14 +1485,15 @@
                         class="px-6 py-3 bg-brand hover:bg-brand-light text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all">Book
                         This Service</a>
                     <a id="modalWhatsApp" href="#" target="_blank"
-                        class="px-6 py-3 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all flex items-center gap-2"><span
-                            class="iconify" data-icon="mdi:whatsapp"></span> Ask Price</a>
+                        class="px-6 py-3 bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold uppercase tracking-widest rounded-full transition-all flex items-center gap-2">
+                        <span class="iconify" data-icon="mdi:whatsapp"></span> Ask Price
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- TOAST -->
+    <!-- ========== TOAST ========== -->
     <div id="toast"
         class="toast fixed bottom-6 left-6 z-[110] bg-[#1A1410] border border-brand/20 rounded-2xl px-6 py-4 flex items-center gap-3 shadow-2xl">
         <span class="iconify text-brand text-2xl" data-icon="mdi:check-circle"></span>
@@ -1442,24 +1503,42 @@
         </div>
     </div>
 
+    <!-- ========== JAVASCRIPT ========== -->
     <script>
+        // ===== Mobile Menu =====
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
-        menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-        document.querySelectorAll('.mobile-link').forEach(link => { link.addEventListener('click', () => mobileMenu.classList.add('hidden')); });
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
 
+        // ===== Scroll Reveal =====
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
         revealElements.forEach(el => revealObserver.observe(el));
 
+        // ===== Navbar Scroll =====
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 100) { nav.classList.add('bg-[#0A0806]/95'); nav.classList.remove('bg-[#0A0806]/80'); }
-            else { nav.classList.remove('bg-[#0A0806]/95'); nav.classList.add('bg-[#0A0806]/80'); }
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-[#0A0806]/95');
+                nav.classList.remove('bg-[#0A0806]/80');
+            } else {
+                nav.classList.remove('bg-[#0A0806]/95');
+                nav.classList.add('bg-[#0A0806]/80');
+            }
         });
 
+        // ===== Gallery Filter =====
         function filterGallery(category) {
             document.querySelectorAll('.gallery-filter').forEach(btn => {
                 btn.classList.remove('bg-brand', 'text-white');
@@ -1468,100 +1547,281 @@
             const activeBtn = document.querySelector(`[data-filter="${category}"]`);
             activeBtn.classList.remove('bg-brand/5', 'text-creme/50');
             activeBtn.classList.add('bg-brand', 'text-white');
+
             document.querySelectorAll('.gallery-item').forEach(item => {
-                item.style.display = (category === 'all' || item.dataset.category === category) ? '' : 'none';
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
             });
         }
 
+        // ===== Lightbox =====
         function openLightbox(el) {
-            document.getElementById('lightboxImg').src = el.querySelector('img').src;
+            const img = el.querySelector('img');
+            document.getElementById('lightboxImg').src = img.src;
             document.getElementById('lightbox').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
-        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
 
+        // ===== FAQ =====
         function toggleFaq(btn) {
             const item = btn.closest('.faq-item');
             const answer = item.querySelector('.faq-answer');
             const icon = btn.querySelector('.faq-icon');
             const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+
             document.querySelectorAll('.faq-answer').forEach(a => a.style.maxHeight = '0px');
-            document.querySelectorAll('.faq-icon').forEach(i => { i.setAttribute('data-icon', 'mdi:plus'); i.style.transform = 'rotate(0deg)'; });
-            document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('border-brand/20'); i.classList.add('border-brand/10'); });
+            document.querySelectorAll('.faq-icon').forEach(i => {
+                i.setAttribute('data-icon', 'mdi:plus');
+                i.style.transform = 'rotate(0deg)';
+            });
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('border-brand/20');
+                i.classList.add('border-brand/10');
+            });
+
             if (!isOpen) {
                 answer.style.maxHeight = answer.scrollHeight + 'px';
-                icon.setAttribute('data-icon', 'mdi:minus'); icon.style.transform = 'rotate(180deg)';
-                item.classList.remove('border-brand/10'); item.classList.add('border-brand/20');
+                icon.setAttribute('data-icon', 'mdi:minus');
+                icon.style.transform = 'rotate(180deg)';
+                item.classList.remove('border-brand/10');
+                item.classList.add('border-brand/20');
             }
         }
 
+        // ===== Before/After Slider =====
         document.querySelectorAll('[data-slider]').forEach(slider => {
             const handle = slider.querySelector('.ba-handle');
             const afterEl = slider.querySelector('.ba-after');
             let isDragging = false;
+
             function updateSlider(x) {
                 const rect = slider.getBoundingClientRect();
-                let pos = Math.max(0.05, Math.min(0.95, (x - rect.left) / rect.width));
+                let pos = (x - rect.left) / rect.width;
+                pos = Math.max(0.05, Math.min(0.95, pos));
                 afterEl.style.clipPath = `inset(0 ${(1 - pos) * 100}% 0 0)`;
                 handle.style.left = `${pos * 100}%`;
             }
+
             slider.addEventListener('mousedown', (e) => { isDragging = true; updateSlider(e.clientX); });
             slider.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); }, { passive: true });
             window.addEventListener('mousemove', (e) => { if (isDragging) updateSlider(e.clientX); });
             window.addEventListener('touchmove', (e) => { if (isDragging) updateSlider(e.touches[0].clientX); }, { passive: true });
             window.addEventListener('mouseup', () => isDragging = false);
             window.addEventListener('touchend', () => isDragging = false);
+
             afterEl.style.clipPath = 'inset(0 50% 0 0)';
         });
 
+        // ===== Service Modals =====
+        const serviceData = {
+            haircut: {
+                title: 'Haircut & Styling',
+                img: 'haircut.jpg',
+                content: `
+                    <p>Our expert stylists deliver precision cuts tailored to your face shape, hair texture, and lifestyle. Whether you want a trendy bob, layers, or a classic cut — we've got you covered.</p>
+                    <h4 class="text-white font-semibold mt-4">What's Included:</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Consultation with senior stylist</li>
+                        <li>Hair wash & conditioning</li>
+                        <li>Precision haircut</li>
+                        <li>Blow-dry & styling</li>
+                        <li>Aftercare tips</li>
+                    </ul>
+                    <h4 class="text-white font-semibold mt-4">Pricing:</h4>
+                    <p>Women's Haircut: ₹499 – ₹999<br>Men's Haircut: ₹299 – ₹599<br>Kids Haircut: ₹249</p>
+                    <p class="text-sm text-creme/40 mt-2">⏱ Duration: 30–60 minutes</p>
+                `
+            },
+            hairspa: {
+                title: 'Hair Spa & Treatment',
+                img: 'hair-spa.jpg',
+                content: `
+                    <p>Revive damaged, dry, or frizzy hair with our intensive spa treatments. Using L'Oréal and Schwarzkopf products, we restore shine, strength, and softness.</p>
+                    <h4 class="text-white font-semibold mt-4">Treatment Options:</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Deep Conditioning Spa – ₹999</li>
+                        <li>Keratin Treatment – ₹3,999</li>
+                        <li>Scalp Detox Treatment – ₹1,299</li>
+                        <li>Anti-Dandruff Treatment – ₹1,199</li>
+                        <li>Hair Botox Treatment – ₹4,999</li>
+                    </ul>
+                    <p class="text-sm text-creme/40 mt-2">⏱ Duration: 45–90 minutes</p>
+                `
+            },
+            haircolor: {
+                title: 'Hair Color & Highlights',
+                img: 'hair-color.jpg',
+                content: `
+                    <p>From natural-looking global color to bold balayage and highlights, our color specialists create the perfect shade for you. We use ammonia-free options for sensitive scalps.</p>
+                    <h4 class="text-white font-semibold mt-4">Color Services:</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Global Hair Color – ₹2,499</li>
+                        <li>Root Touch-Up – ₹999</li>
+                        <li>Highlights (Partial) – ₹2,999</li>
+                        <li>Full Highlights – ₹3,999</li>
+                        <li>Balayage / Ombré – ₹4,999</li>
+                        <li>Color Correction – Price on consultation</li>
+                    </ul>
+                    <p class="text-sm text-creme/40 mt-2">⏱ Duration: 2–4 hours depending on service</p>
+                `
+            },
+            facial: {
+                title: 'Facial & Skin Care',
+                img: 'facial.jpg',
+                content: `
+                    <p>Pamper your skin with our luxurious facials designed for Indian skin types. From deep cleansing to anti-aging, we have a facial for every need.</p>
+                    <h4 class="text-white font-semibold mt-4">Facial Menu:</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Classic Cleanup – ₹599</li>
+                        <li>Herbal Facial – ₹799</li>
+                        <li>Gold Facial – ₹1,299</li>
+                        <li>Diamond Facial – ₹1,499</li>
+                        <li>O3+ Bridal Facial – ₹2,499</li>
+                        <li>Anti-Acne Treatment – ₹1,199</li>
+                        <li>De-Tan Facial – ₹999</li>
+                    </ul>
+                    <p class="text-sm text-creme/40 mt-2">⏱ Duration: 45–75 minutes</p>
+                `
+            },
+            makeup: {
+                title: 'Makeup Services',
+                img: 'makeup.jpg',
+                content: `
+                    <p>Whether it's a cocktail party, festive celebration, or a photoshoot — our makeup artists create flawless looks using MAC, Bobbi Brown, and other premium brands.</p>
+                    <h4 class="text-white font-semibold mt-4">Makeup Packages:</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Party Makeup – ₹2,999</li>
+                        <li>Engagement Makeup – ₹4,999</li>
+                        <li>Photoshoot Makeup – ₹3,499</li>
+                        <li>Festive Makeup – ₹2,499</li>
+                    </ul>
+                    <p class="text-sm text-creme/40 mt-2">Includes: Skincare prep, base, eyes, lips & hairstyling</p>
+                `
+            },
+            bridal: {
+                title: 'Bridal Makeup Package',
+                img: 'bridal-makeup.jpg',
+                content: `
+                    <p>Your wedding day deserves the most special look. Our bridal team creates timeless, elegant looks that photograph beautifully and last all day.</p>
+                    <h4 class="text-white font-semibold mt-4">Bridal Packages:</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li><strong>Silver Package</strong> – ₹9,999 (Wedding day only)</li>
+                        <li><strong>Gold Package</strong> – ₹14,999 (Engagement + Wedding)</li>
+                        <li><strong>Diamond Package</strong> – ₹24,999 (Mehendi + Engagement + Wedding + Reception)</li>
+                    </ul>
+                    <h4 class="text-white font-semibold mt-4">Includes:</h4>
+                    <p>Pre-bridal facial, draping, hairstyling, touch-up kit, and trial session (Diamond package).</p>
+                    <p class="text-sm text-creme/40 mt-2">🏠 Home service available for bridal makeup</p>
+                `
+            },
+            manicure: {
+                title: 'Manicure & Pedicure',
+                img: 'manicure-pedicure.jpg',
+                content: `
+                    <p>Relax while we pamper your hands and feet with our luxurious nail care services. From basic grooming to gel nail art — we do it all.</p>
+                    <h4 class="text-white font-semibold mt-4">Nail Services:</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Classic Manicure – ₹499</li>
+                        <li>Classic Pedicure – ₹599</li>
+                        <li>Combo (Mani + Pedi) – ₹899</li>
+                        <li>Gel Nail Polish – ₹799</li>
+                        <li>Nail Art (per hand) – ₹599</li>
+                        <li>Spa Manicure & Pedicure – ₹1,299</li>
+                    </ul>
+                    <p class="text-sm text-creme/40 mt-2">⏱ Duration: 45–90 minutes</p>
+                `
+            },
+            waxing: {
+                title: 'Waxing & Threading',
+                img: 'waxing-threading.jpg',
+                content: `
+                    <p>Smooth, silky skin with our hygienic and gentle waxing services. We use Rica wax for sensitive skin and offer both strip and stripless options.</p>
+                    <h4 class="text-white font-semibold mt-4">Popular Services:</h4>
+                    <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Full Arms – ₹499</li>
+                        <li>Full Legs – ₹699</li>
+                        <li>Full Body Wax – ₹1,499</li>
+                        <li>Bikini Wax – ₹799</li>
+                        <li>Upper Lip / Chin – ₹99 each</li>
+                        <li>Eyebrow Threading – ₹79</li>
+                        <li>Full Face Threading – ₹199</li>
+                    </ul>
+                    <p class="text-sm text-creme/40 mt-2">All waxing uses disposable strips & hygienic practices</p>
+                `
+            }
+        };
+
+        function openServiceModal(key) {
+            const data = serviceData[key];
+            if (!data) return;
+            document.getElementById('modalImg').src = data.img;
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalContent').innerHTML = data.content;
+            document.getElementById('modalWhatsApp').href = `https://wa.me/919876543210?text=${encodeURIComponent('Hi! I want to know about ' + data.title + ' pricing and availability.')}`;
+            document.getElementById('serviceModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeServiceModal() {
+            document.getElementById('serviceModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+                closeServiceModal();
+            }
+        });
+
+        // ============================================================
+        // 📧 EMAILJS — Booking Form Handler
+        // Replace YOUR_SERVICE_ID and YOUR_TEMPLATE_ID below.
+        // In your EmailJS template, use these variables:
+        //   {{from_name}}  {{from_phone}}  {{reply_to}}
+        //   {{service}}    {{datetime}}    {{message}}
+        // ============================================================
         function handleBooking(e) {
             e.preventDefault();
-            const data = new FormData(e.target);
-            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const form = e.target;
+            const data = new FormData(form);
+            const submitBtn = form.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
 
-            // Disable button to prevent double-submit
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
+            submitBtn.textContent = 'Sending…';
 
-            // âœ… REPLACE these two values with your EmailJS IDs
-            const SERVICE_ID = 'YOUR_SERVICE_ID';   // e.g. 'service_abc123'
-            const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // e.g. 'template_xyz456'
+            const SERVICE_ID = 'YOUR_SERVICE_ID';   // 🔑 e.g. 'service_abc123'
+            const TEMPLATE_ID = 'YOUR_TEMPLATE_ID';  // 🔑 e.g. 'template_xyz456'
 
             const templateParams = {
-                from_name: data.get('name'),
-                from_phone: data.get('phone'),
+                from_name: data.get('from_name'),
+                from_phone: data.get('from_phone'),
+                reply_to: data.get('reply_to') || '',
                 service: data.get('service'),
                 datetime: data.get('datetime'),
-                message: data.get('message') || 'No additional message',
-                reply_to: data.get('phone')   // optional â€” remove if not needed
+                message: data.get('message') || 'No additional message'
             };
 
             emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
                 .then(() => {
-                    // Show success toast
-                    const toast = document.getElementById('toast');
-                    toast.querySelector('.font-semibold').textContent = 'Booking Sent!';
-                    toast.querySelector('.text-xs').textContent = 'We received your booking & will confirm shortly.';
-                    toast.classList.add('show');
-                    setTimeout(() => toast.classList.remove('show'), 4500);
-
-                    // Also open WhatsApp for instant confirmation
-                    const waMsg = `Hi Glamour Studio! I'd like to book an appointment:\n\nName: ${data.get('name')}\nPhone: ${data.get('phone')}\nService: ${data.get('service')}\nDate/Time: ${data.get('datetime')}\nMessage: ${data.get('message') || 'None'}`;
+                    showToast('✅ Booking Sent!', `We'll confirm your appointment shortly.`);
+                    form.reset();
+                    // Also ping WhatsApp for instant reply
+                    const waMsg = `Hi Glamour Studio! Booking request:\n\nName: ${templateParams.from_name}\nPhone: ${templateParams.from_phone}\nService: ${templateParams.service}\nDate/Time: ${templateParams.datetime}\nMessage: ${templateParams.message}`;
                     window.open(`https://wa.me/919876543210?text=${encodeURIComponent(waMsg)}`, '_blank');
-
-                    e.target.reset();
                 })
-                .catch((error) => {
-                    console.error('EmailJS error:', error);
-                    // Fall back: still show toast & open WhatsApp even if email fails
-                    const toast = document.getElementById('toast');
-                    toast.querySelector('.font-semibold').textContent = 'Booked via WhatsApp!';
-                    toast.querySelector('.text-xs').textContent = 'Email failed â€” redirecting to WhatsApp.';
-                    toast.classList.add('show');
-                    setTimeout(() => toast.classList.remove('show'), 4500);
-
-                    const waMsg = `Hi Glamour Studio! I'd like to book an appointment:\n\nName: ${data.get('name')}\nPhone: ${data.get('phone')}\nService: ${data.get('service')}\nDate/Time: ${data.get('datetime')}\nMessage: ${data.get('message') || 'None'}`;
+                .catch((err) => {
+                    console.warn('EmailJS error:', err);
+                    showToast('📱 Redirecting to WhatsApp…', 'Email failed — booking via WhatsApp instead.');
+                    const waMsg = `Hi Glamour Studio! Booking request:\n\nName: ${templateParams.from_name}\nPhone: ${templateParams.from_phone}\nService: ${templateParams.service}\nDate/Time: ${templateParams.datetime}\nMessage: ${templateParams.message}`;
                     window.open(`https://wa.me/919876543210?text=${encodeURIComponent(waMsg)}`, '_blank');
                 })
                 .finally(() => {
@@ -1571,68 +1831,24 @@
         }
 
         function bookViaWhatsApp() {
-            const data = new FormData(document.getElementById('bookingForm'));
-            const waMsg = `Hi Glamour Studio! I'd like to book:\n\nName: ${data.get('name') || 'N/A'}\nPhone: ${data.get('phone') || 'N/A'}\nService: ${data.get('service') || 'N/A'}\nDate/Time: ${data.get('datetime') || 'N/A'}\nMessage: ${data.get('message') || 'None'}`;
+            const form = document.getElementById('bookingForm');
+            const data = new FormData(form);
+            const waMsg = `Hi Glamour Studio! I'd like to book:\n\nName: ${data.get('from_name') || 'N/A'}\nPhone: ${data.get('from_phone') || 'N/A'}\nService: ${data.get('service') || 'N/A'}\nDate/Time: ${data.get('datetime') || 'N/A'}\nMessage: ${data.get('message') || 'None'}`;
             window.open(`https://wa.me/919876543210?text=${encodeURIComponent(waMsg)}`, '_blank');
         }
 
-        // ===== SERVICE MODAL DATA â€” ALL IMAGES UPDATED =====
-        const serviceData = {
-            haircut: {
-                title: 'Haircut & Styling',
-                img: 'hair cut img S.jpg',
-                content: '<p>Our expert stylists deliver precision cuts tailored to your face shape, hair texture, and lifestyle.</p><h4 class="text-white font-semibold mt-4">Pricing:</h4><p>Women\'s Haircut: â‚¹499 â€“ â‚¹999<br>Men\'s Haircut: â‚¹299 â€“ â‚¹599<br>Kids Haircut: â‚¹249</p><p class="text-sm text-creme/40 mt-2">â± Duration: 30â€“60 minutes</p>'
-            },
-            hairspa: {
-                title: 'Hair Spa & Treatment',
-                img: 'hair spa img S.jpg',
-                content: '<p>Revive damaged, dry, or frizzy hair with our intensive spa treatments.</p><h4 class="text-white font-semibold mt-4">Treatment Options:</h4><ul class="list-disc list-inside space-y-1 text-sm"><li>Deep Conditioning Spa â€“ â‚¹999</li><li>Keratin Treatment â€“ â‚¹3,999</li><li>Scalp Detox â€“ â‚¹1,299</li><li>Hair Botox â€“ â‚¹4,999</li></ul>'
-            },
-            haircolor: {
-                title: 'Hair Color & Highlights',
-                img: 'hair color img S.jpg',
-                content: '<p>From global color to bold balayage, our specialists create the perfect shade.</p><h4 class="text-white font-semibold mt-4">Color Services:</h4><ul class="list-disc list-inside space-y-1 text-sm"><li>Global Hair Color â€“ â‚¹2,499</li><li>Highlights â€“ â‚¹2,999</li><li>Balayage / OmbrÃ© â€“ â‚¹4,999</li></ul>'
-            },
-            facial: {
-                title: 'Facial & Skin Care',
-                img: 'facial img S.jpg',
-                content: '<p>Luxurious facials designed for Indian skin types.</p><h4 class="text-white font-semibold mt-4">Facial Menu:</h4><ul class="list-disc list-inside space-y-1 text-sm"><li>Classic Cleanup â€“ â‚¹599</li><li>Gold Facial â€“ â‚¹1,299</li><li>Diamond Facial â€“ â‚¹1,499</li><li>O3+ Bridal Facial â€“ â‚¹2,499</li></ul>'
-            },
-            makeup: {
-                title: 'Makeup Services',
-                img: 'makeup img S.jpg',
-                content: '<p>Flawless looks using MAC, Bobbi Brown, and premium brands.</p><h4 class="text-white font-semibold mt-4">Packages:</h4><ul class="list-disc list-inside space-y-1 text-sm"><li>Party Makeup â€“ â‚¹2,999</li><li>Engagement Makeup â€“ â‚¹4,999</li><li>Photoshoot Makeup â€“ â‚¹3,499</li></ul>'
-            },
-            bridal: {
-                title: 'Bridal Makeup Package',
-                img: 'Bridal Makeup img S.jpg',
-                content: '<p>Your wedding day deserves the most special look.</p><h4 class="text-white font-semibold mt-4">Bridal Packages:</h4><ul class="list-disc list-inside space-y-1 text-sm"><li><strong>Silver</strong> â€“ â‚¹9,999 (Wedding day)</li><li><strong>Gold</strong> â€“ â‚¹14,999 (Engagement + Wedding)</li><li><strong>Diamond</strong> â€“ â‚¹24,999 (All events)</li></ul><p class="text-sm text-creme/40 mt-2">ðŸ  Home service available</p>'
-            },
-            manicure: {
-                title: 'Manicure & Pedicure',
-                img: 'Manicure & Pedicure img S.jpg',
-                content: '<p>Luxurious nail care services.</p><h4 class="text-white font-semibold mt-4">Services:</h4><ul class="list-disc list-inside space-y-1 text-sm"><li>Classic Manicure â€“ â‚¹499</li><li>Combo (Mani + Pedi) â€“ â‚¹899</li><li>Gel Nail Polish â€“ â‚¹799</li><li>Spa Manicure & Pedicure â€“ â‚¹1,299</li></ul>'
-            },
-            waxing: {
-                title: 'Waxing & Threading',
-                img: 'Waxing & Threading imgS.jpg',
-                content: '<p>Smooth, silky skin with hygienic and gentle waxing.</p><h4 class="text-white font-semibold mt-4">Popular Services:</h4><ul class="list-disc list-inside space-y-1 text-sm"><li>Full Arms â€“ â‚¹499</li><li>Full Legs â€“ â‚¹699</li><li>Full Body Wax â€“ â‚¹1,499</li><li>Eyebrow Threading â€“ â‚¹79</li></ul>'
-            }
-        };
-
-        function openServiceModal(key) {
-            const data = serviceData[key]; if (!data) return;
-            document.getElementById('modalImg').src = data.img;
-            document.getElementById('modalTitle').textContent = data.title;
-            document.getElementById('modalContent').innerHTML = data.content;
-            document.getElementById('modalWhatsApp').href = `https://wa.me/919876543210?text=${encodeURIComponent('Hi! I want to know about ' + data.title + ' pricing.')}`;
-            document.getElementById('serviceModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
+        function showToast(title, subtitle) {
+            const toast = document.getElementById('toast');
+            if (!toast) return;
+            const t = toast.querySelector('.font-semibold');
+            const s = toast.querySelector('.text-xs');
+            if (t) t.textContent = title;
+            if (s) s.textContent = subtitle;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 5000);
         }
-        function closeServiceModal() { document.getElementById('serviceModal').classList.remove('active'); document.body.style.overflow = ''; }
-
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeLightbox(); closeServiceModal(); } });
     </script>
+
 </body>
 
 </html>
