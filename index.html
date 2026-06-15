@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glamour Studio — Premium Salon & Beauty Lounge</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="shortcut icon" href="favicon.svg">
-    <meta name="theme-color" content="#C8834A">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="shortcut icon" href="images/favicon.svg">
+    <meta name="theme-color" content="#9F544A">
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
@@ -31,14 +31,14 @@
                 extend: {
                     fontFamily: { sans: ['Manrope', 'sans-serif'] },
                     colors: {
-                        brand: '#C8834A',
-                        'brand-light': '#D4A574',
-                        'brand-dark': '#5B3A29',
-                        cinna: '#5B3A29',
-                        chai: '#C8834A',
-                        latte: '#C4A47A',
-                        creme: '#E8D5C0',
-                        froth: '#F5EDE4'
+                        brand: '#9F544A',
+                        'brand-light': '#B77D77',
+                        'brand-dark': '#5A3735',
+                        cinna: '#5A3735',
+                        chai: '#9F544A',
+                        latte: '#B77D77',
+                        creme: '#EAC3BF',
+                        froth: '#F9EFED'
                     }
                 }
             }
@@ -46,7 +46,7 @@
     </script>
     <style>
         ::selection {
-            background: #C8834A;
+            background: #9F544A;
             color: #fff;
         }
 
@@ -55,16 +55,16 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #0A0806;
+            background: #110D0D;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #3D2E22;
+            background: #3A2626;
             border-radius: 3px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #C8834A;
+            background: #9F544A;
         }
 
         html {
@@ -134,7 +134,7 @@
             transform: translate(-50%, -50%);
             width: 44px;
             height: 44px;
-            background: #C8834A;
+            background: #9F544A;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -228,11 +228,11 @@
     </style>
 </head>
 
-<body class="bg-[#0A0806] text-white font-sans">
+<body class="bg-[#110D0D] text-white font-sans">
 
     <!-- ========== NAVIGATION ========== -->
     <nav id="navbar"
-        class="fixed top-0 w-full z-50 nav-blur bg-[#0A0806]/80 border-b border-white/5 transition-all duration-300">
+        class="fixed top-0 w-full z-50 nav-blur bg-[#110D0D]/80 border-b border-white/5 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
             <a href="#" class="flex items-center gap-2">
                 <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center">
@@ -260,7 +260,7 @@
             </button>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobileMenu" class="md:hidden hidden bg-[#0F0C08] border-t border-white/5 px-6 py-6 space-y-4">
+        <div id="mobileMenu" class="md:hidden hidden bg-[#170F0F] border-t border-white/5 px-6 py-6 space-y-4">
             <a href="#services"
                 class="block text-sm text-slate-400 hover:text-white transition-colors mobile-link">Services</a>
             <a href="#pricing"
@@ -285,12 +285,12 @@
     <!-- HERO -->
     <section class="relative min-h-screen flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="hero.jpg" alt="Glamour Studio Interior"
+            <img src="hero image.png" alt="Glamour Studio Interior"
                 class="w-full h-full object-cover object-center hero-bg-zoom"
-                style="filter: brightness(0.60) contrast(1.1) saturate(0.8);">
+                style="filter: brightness(0.90) contrast(1.1) saturate(0.5);">
         </div>
-        <div class="absolute inset-0 z-[1] bg-gradient-to-r from-[#0A0806] via-[#0A0806]/70 to-[#0A0806]/40"></div>
-        <div class="absolute inset-0 z-[1] bg-gradient-to-t from-[#0A0806] via-transparent to-[#0A0806]/50"></div>
+        <div class="absolute inset-0 z-[1] bg-gradient-to-r from-[#110D0D] via-[#110D0D]/70 to-[#110D0D]/40"></div>
+        <div class="absolute inset-0 z-[1] bg-gradient-to-t from-[#110D0D] via-transparent to-[#110D0D]/50"></div>
         <div class="absolute inset-0 z-[1] bg-gradient-to-br from-cinna/30 via-transparent to-transparent"></div>
         <div class="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-brand/10 blur-[120px] z-[1]"></div>
         <div class="absolute bottom-1/4 left-1/3 w-72 h-72 rounded-full bg-brand/5 blur-[100px] z-[1]"></div>
@@ -336,7 +336,7 @@
     </section>
 
     <!-- ========== MARQUEE ========== -->
-    <div class="py-4 border-y border-brand/10 bg-[#0F0C08] overflow-hidden">
+    <div class="py-4 border-y border-brand/10 bg-[#170F0F] overflow-hidden">
         <div class="marquee flex items-center gap-8 whitespace-nowrap">
             <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Haircut</span>
             <span class="text-xs font-bold uppercase tracking-widest text-latte/50">✦ Hair Spa</span>
@@ -373,10 +373,10 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 reveal">
                 <div onclick="openServiceModal('haircut')"
                     class="group cursor-pointer relative h-64 rounded-2xl overflow-hidden border border-brand/10 hover:border-brand/30 transition-all duration-300 hover:-translate-y-1">
-                    <img src="haircut.jpg"
+                    <img src="images/haircut.jpg"
                         class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700"
                         style="filter: sepia(0.1);">
-                    <div class="absolute inset-0 bg-gradient-to-t from-[#0A0806] via-[#0A0806]/50 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#110D0D] via-[#110D0D]/50 to-transparent"></div>
                     <div class="relative h-full flex flex-col justify-end p-6">
                         <span class="iconify text-brand text-3xl mb-2" data-icon="mdi:content-cut"></span>
                         <h3 class="text-lg font-semibold">Haircut</h3>
@@ -385,7 +385,7 @@
                 </div>
                 <div onclick="openServiceModal('hairspa')"
                     class="group cursor-pointer relative h-64 rounded-2xl overflow-hidden border border-brand/10 hover:border-brand/30 transition-all duration-300 hover:-translate-y-1">
-                    <img src="hair-spa.jpg"
+                    <img src="images/hair-spa.jpg"
                         class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700"
                         style="filter: sepia(0.1);">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0A0806] via-[#0A0806]/50 to-transparent"></div>
@@ -397,7 +397,7 @@
                 </div>
                 <div onclick="openServiceModal('haircolor')"
                     class="group cursor-pointer relative h-64 rounded-2xl overflow-hidden border border-brand/10 hover:border-brand/30 transition-all duration-300 hover:-translate-y-1">
-                    <img src="hair-color.jpg"
+                    <img src="images/hair-color.jpg"
                         class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700"
                         style="filter: sepia(0.1);">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0A0806] via-[#0A0806]/50 to-transparent"></div>
@@ -409,7 +409,7 @@
                 </div>
                 <div onclick="openServiceModal('facial')"
                     class="group cursor-pointer relative h-64 rounded-2xl overflow-hidden border border-brand/10 hover:border-brand/30 transition-all duration-300 hover:-translate-y-1">
-                    <img src="facial.jpg"
+                    <img src="images/facial.jpg"
                         class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700"
                         style="filter: sepia(0.1);">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0A0806] via-[#0A0806]/50 to-transparent"></div>
@@ -421,7 +421,7 @@
                 </div>
                 <div onclick="openServiceModal('makeup')"
                     class="group cursor-pointer relative h-64 rounded-2xl overflow-hidden border border-brand/10 hover:border-brand/30 transition-all duration-300 hover:-translate-y-1">
-                    <img src="makeup.jpg"
+                    <img src="images/makeup.jpg"
                         class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700"
                         style="filter: sepia(0.1);">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0A0806] via-[#0A0806]/50 to-transparent"></div>
@@ -433,7 +433,7 @@
                 </div>
                 <div onclick="openServiceModal('bridal')"
                     class="group cursor-pointer relative h-64 rounded-2xl overflow-hidden border border-brand/10 hover:border-brand/30 transition-all duration-300 hover:-translate-y-1">
-                    <img src="bridal-makeup.jpg"
+                    <img src="images/bridal-makeup.jpg"
                         class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700"
                         style="filter: sepia(0.1);">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0A0806] via-[#0A0806]/50 to-transparent"></div>
@@ -445,7 +445,7 @@
                 </div>
                 <div onclick="openServiceModal('manicure')"
                     class="group cursor-pointer relative h-64 rounded-2xl overflow-hidden border border-brand/10 hover:border-brand/30 transition-all duration-300 hover:-translate-y-1">
-                    <img src="manicure-pedicure.jpg"
+                    <img src="images/manicure-pedicure.jpg"
                         class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700"
                         style="filter: sepia(0.1);">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0A0806] via-[#0A0806]/50 to-transparent"></div>
@@ -457,7 +457,7 @@
                 </div>
                 <div onclick="openServiceModal('waxing')"
                     class="group cursor-pointer relative h-64 rounded-2xl overflow-hidden border border-brand/10 hover:border-brand/30 transition-all duration-300 hover:-translate-y-1">
-                    <img src="waxing-threading.jpg"
+                    <img src="images/waxing-threading.jpg"
                         class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-110 transition-all duration-700"
                         style="filter: sepia(0.1);">
                     <div class="absolute inset-0 bg-gradient-to-t from-[#0A0806] via-[#0A0806]/50 to-transparent"></div>
@@ -472,7 +472,7 @@
     </section>
 
     <!-- ========== PRICING ========== -->
-    <section id="pricing" class="py-24 px-6 bg-[#0F0C08]">
+    <section id="pricing" class="py-24 px-6 bg-[#170F0F]">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <span class="text-xs font-bold uppercase tracking-widest text-brand">Price List</span>
@@ -573,7 +573,7 @@
             <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3 reveal">
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="interior" onclick="openLightbox(this)">
-                    <img src="interior-gallery.jpg" class="w-full h-full object-cover"
+                    <img src="images/interior-gallery.jpg" class="w-full h-full object-cover"
                         style="filter: sepia(0.08);">
                     <div
                         class="absolute inset-0 bg-cinna/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -582,7 +582,7 @@
                 </div>
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="haircut" onclick="openLightbox(this)">
-                    <img src="haircut-gallery.jpg" class="w-full h-full object-cover"
+                    <img src="images/haircut-gallery.jpg" class="w-full h-full object-cover"
                         style="filter: sepia(0.08);">
                     <div
                         class="absolute inset-0 bg-cinna/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -591,7 +591,7 @@
                 </div>
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="makeup" onclick="openLightbox(this)">
-                    <img src="makeup-gallery.jpg" class="w-full h-full object-cover"
+                    <img src="images/makeup-gallery.jpg" class="w-full h-full object-cover"
                         style="filter: sepia(0.08);">
                     <div
                         class="absolute inset-0 bg-cinna/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -600,7 +600,7 @@
                 </div>
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="color" onclick="openLightbox(this)">
-                    <img src="hair-color-gallery.jpg" class="w-full h-full object-cover"
+                    <img src="images/hair-color-gallery.jpg" class="w-full h-full object-cover"
                         style="filter: sepia(0.08);">
                     <div
                         class="absolute inset-0 bg-cinna/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -609,7 +609,7 @@
                 </div>
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="interior" onclick="openLightbox(this)">
-                    <img src="hero.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
+                    <img src="images/hero.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
                     <div
                         class="absolute inset-0 bg-cinna/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="iconify text-froth text-3xl" data-icon="mdi:magnify-plus"></span>
@@ -617,7 +617,7 @@
                 </div>
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="haircut" onclick="openLightbox(this)">
-                    <img src="haircut.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
+                    <img src="images/haircut.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
                     <div
                         class="absolute inset-0 bg-cinna/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="iconify text-froth text-3xl" data-icon="mdi:magnify-plus"></span>
@@ -625,7 +625,7 @@
                 </div>
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="makeup" onclick="openLightbox(this)">
-                    <img src="makeup.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
+                    <img src="images/makeup.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
                     <div
                         class="absolute inset-0 bg-cinna/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="iconify text-froth text-3xl" data-icon="mdi:magnify-plus"></span>
@@ -633,7 +633,7 @@
                 </div>
                 <div class="gallery-item relative rounded-2xl overflow-hidden aspect-square cursor-pointer group"
                     data-category="color" onclick="openLightbox(this)">
-                    <img src="hair-color.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
+                    <img src="images/hair-color.jpg" class="w-full h-full object-cover" style="filter: sepia(0.08);">
                     <div
                         class="absolute inset-0 bg-cinna/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                         <span class="iconify text-froth text-3xl" data-icon="mdi:magnify-plus"></span>
@@ -644,11 +644,11 @@
     </section>
 
     <!-- ========== ABOUT ========== -->
-    <section id="about" class="py-24 px-6 bg-[#0F0C08]">
+    <section id="about" class="py-24 px-6 bg-[#170F0F]">
         <div class="max-w-7xl mx-auto">
             <div class="grid md:grid-cols-2 gap-16 items-center reveal">
                 <div class="relative">
-                    <img src="interior-gallery.jpg"
+                    <img src="images/interior-gallery.jpg"
                         class="rounded-3xl w-full object-cover h-[500px] grayscale hover:grayscale-0 transition-all duration-700"
                         style="filter: sepia(0.2) grayscale(1);">
                     <div class="absolute -bottom-6 -right-6 bg-brand rounded-2xl p-6 text-center">
@@ -715,7 +715,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal">
                 <div class="group text-center">
                     <div class="relative rounded-3xl overflow-hidden aspect-[3/4] mb-4">
-                        <img src="team-priya.jpg"
+                        <img src="images/team-priya.jpg"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                             style="filter: sepia(0.1);">
                         <div class="absolute inset-0 bg-gradient-to-t from-cinna/80 via-transparent to-transparent">
@@ -734,7 +734,7 @@
                 </div>
                 <div class="group text-center">
                     <div class="relative rounded-3xl overflow-hidden aspect-[3/4] mb-4">
-                        <img src="team-neha.jpg"
+                        <img src="images/team-neha.jpg"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                             style="filter: sepia(0.1);">
                         <div class="absolute inset-0 bg-gradient-to-t from-cinna/80 via-transparent to-transparent">
@@ -753,7 +753,7 @@
                 </div>
                 <div class="group text-center">
                     <div class="relative rounded-3xl overflow-hidden aspect-[3/4] mb-4">
-                        <img src="team-gargi.jpg"
+                        <img src="images/team-gargi.jpg"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                             style="filter: sepia(0.1);">
                         <div class="absolute inset-0 bg-gradient-to-t from-cinna/80 via-transparent to-transparent">
@@ -772,7 +772,7 @@
                 </div>
                 <div class="group text-center">
                     <div class="relative rounded-3xl overflow-hidden aspect-[3/4] mb-4">
-                        <img src="team-anita.jpg"
+                        <img src="images/team-anita.jpg"
                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                             style="filter: sepia(0.1);">
                         <div class="absolute inset-0 bg-gradient-to-t from-cinna/80 via-transparent to-transparent">
@@ -805,9 +805,9 @@
             <div class="grid md:grid-cols-2 gap-8 reveal">
                 <div>
                     <div class="ba-slider rounded-3xl aspect-[4/3] relative" data-slider>
-                        <img src="hair after 1.png" class="w-full h-full object-cover rounded-3xl" alt="After">
+                        <img src="images/hair after 1.png" class="w-full h-full object-cover rounded-3xl" alt="After">
                         <div class="ba-after rounded-3xl">
-                            <img src="hair before 1.png" class="w-full h-full object-cover rounded-3xl"
+                            <img src="images/hair before 1.png" class="w-full h-full object-cover rounded-3xl"
                                 alt="Before">
                         </div>
                         <div class="ba-handle"></div>
@@ -822,10 +822,10 @@
                 </div>
                 <div>
                     <div class="ba-slider rounded-3xl aspect-[4/3] relative" data-slider>
-                        <img src="Bridal Makeup after 1.png" class="w-full h-full object-cover rounded-3xl"
+                        <img src="images/Bridal Makeup after 1.png" class="w-full h-full object-cover rounded-3xl"
                             alt="After">
                         <div class="ba-after rounded-3xl">
-                            <img src="Bridal Makeup before 1.png" class="w-full h-full object-cover rounded-3xl"
+                            <img src="images/Bridal Makeup before 1.png" class="w-full h-full object-cover rounded-3xl"
                                 alt="Before">
                         </div>
                         <div class="ba-handle"></div>
@@ -925,7 +925,7 @@
     </section>
 
     <!-- ========== REVIEWS ========== -->
-    <section id="reviews" class="py-24 px-6 bg-[#0F0C08]">
+    <section id="reviews" class="py-24 px-6 bg-[#170F0F]">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <span class="text-xs font-bold uppercase tracking-widest text-brand">Testimonials</span>
@@ -1123,7 +1123,7 @@
     </section>
 
     <!-- ========== INSTAGRAM FEED ========== -->
-    <section class="py-24 px-6 bg-[#0F0C08]">
+    <section class="py-24 px-6 bg-[#170F0F]">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12 reveal">
                 <span class="text-xs font-bold uppercase tracking-widest text-brand">@glamourstudio</span>
@@ -1133,7 +1133,7 @@
             </div>
             <div class="flex gap-4 overflow-x-auto insta-scroll pb-4 reveal">
                 <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
-                    <img src="bridal-makeup.jpg"
+                    <img src="images/bridal-makeup.jpg"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         style="filter: sepia(0.08);">
                     <div
@@ -1142,7 +1142,7 @@
                     </div>
                 </div>
                 <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
-                    <img src="makeup.jpg"
+                    <img src="images/makeup.jpg"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         style="filter: sepia(0.08);">
                     <div
@@ -1151,7 +1151,7 @@
                     </div>
                 </div>
                 <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
-                    <img src="Bridal Makeup after 1.png"
+                    <img src="images/Bridal Makeup after 1.png"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         style="filter: sepia(0.08);">
                     <div
@@ -1160,7 +1160,7 @@
                     </div>
                 </div>
                 <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
-                    <img src="hair after 1.png"
+                    <img src="images/hair after 1.png"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         style="filter: sepia(0.08);">
                     <div
@@ -1169,7 +1169,7 @@
                     </div>
                 </div>
                 <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
-                    <img src="makeup-gallery.jpg"
+                    <img src="images/makeup-gallery.jpg"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         style="filter: sepia(0.08);">
                     <div
@@ -1178,7 +1178,7 @@
                     </div>
                 </div>
                 <div class="flex-shrink-0 w-64 h-64 rounded-2xl overflow-hidden relative group cursor-pointer">
-                    <img src="team-neha.jpg"
+                    <img src="images/team-neha.jpg"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                         style="filter: sepia(0.08);">
                     <div
@@ -1288,7 +1288,7 @@
     </section>
 
     <!-- ========== MAP & CONTACT ========== -->
-    <section id="contact" class="py-24 px-6 bg-[#0F0C08]">
+    <section id="contact" class="py-24 px-6 bg-[#170F0F]">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <span class="text-xs font-bold uppercase tracking-widest text-brand">Find Us</span>
@@ -1623,7 +1623,7 @@
         const serviceData = {
             haircut: {
                 title: 'Haircut & Styling',
-                img: 'haircut.jpg',
+                img: 'images/haircut.jpg',
                 content: `
                     <p>Our expert stylists deliver precision cuts tailored to your face shape, hair texture, and lifestyle. Whether you want a trendy bob, layers, or a classic cut — we've got you covered.</p>
                     <h4 class="text-white font-semibold mt-4">What's Included:</h4>
@@ -1641,7 +1641,7 @@
             },
             hairspa: {
                 title: 'Hair Spa & Treatment',
-                img: 'hair-spa.jpg',
+                img: 'images/hair-spa.jpg',
                 content: `
                     <p>Revive damaged, dry, or frizzy hair with our intensive spa treatments. Using L'Oréal and Schwarzkopf products, we restore shine, strength, and softness.</p>
                     <h4 class="text-white font-semibold mt-4">Treatment Options:</h4>
@@ -1657,7 +1657,7 @@
             },
             haircolor: {
                 title: 'Hair Color & Highlights',
-                img: 'hair-color.jpg',
+                img: 'images/hair-color.jpg',
                 content: `
                     <p>From natural-looking global color to bold balayage and highlights, our color specialists create the perfect shade for you. We use ammonia-free options for sensitive scalps.</p>
                     <h4 class="text-white font-semibold mt-4">Color Services:</h4>
@@ -1674,7 +1674,7 @@
             },
             facial: {
                 title: 'Facial & Skin Care',
-                img: 'facial.jpg',
+                img: 'images/facial.jpg',
                 content: `
                     <p>Pamper your skin with our luxurious facials designed for Indian skin types. From deep cleansing to anti-aging, we have a facial for every need.</p>
                     <h4 class="text-white font-semibold mt-4">Facial Menu:</h4>
@@ -1692,7 +1692,7 @@
             },
             makeup: {
                 title: 'Makeup Services',
-                img: 'makeup.jpg',
+                img: 'images/makeup.jpg',
                 content: `
                     <p>Whether it's a cocktail party, festive celebration, or a photoshoot — our makeup artists create flawless looks using MAC, Bobbi Brown, and other premium brands.</p>
                     <h4 class="text-white font-semibold mt-4">Makeup Packages:</h4>
@@ -1707,7 +1707,7 @@
             },
             bridal: {
                 title: 'Bridal Makeup Package',
-                img: 'bridal-makeup.jpg',
+                img: 'images/bridal-makeup.jpg',
                 content: `
                     <p>Your wedding day deserves the most special look. Our bridal team creates timeless, elegant looks that photograph beautifully and last all day.</p>
                     <h4 class="text-white font-semibold mt-4">Bridal Packages:</h4>
@@ -1723,7 +1723,7 @@
             },
             manicure: {
                 title: 'Manicure & Pedicure',
-                img: 'manicure-pedicure.jpg',
+                img: 'images/manicure-pedicure.jpg',
                 content: `
                     <p>Relax while we pamper your hands and feet with our luxurious nail care services. From basic grooming to gel nail art — we do it all.</p>
                     <h4 class="text-white font-semibold mt-4">Nail Services:</h4>
@@ -1740,7 +1740,7 @@
             },
             waxing: {
                 title: 'Waxing & Threading',
-                img: 'waxing-threading.jpg',
+                img: 'images/waxing-threading.jpg',
                 content: `
                     <p>Smooth, silky skin with our hygienic and gentle waxing services. We use Rica wax for sensitive skin and offer both strip and stripless options.</p>
                     <h4 class="text-white font-semibold mt-4">Popular Services:</h4>
